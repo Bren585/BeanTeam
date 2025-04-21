@@ -7,8 +7,7 @@ public class Entity : MonoBehaviour
     // ************ MEMBERS ********************************
 
     // ************ PHYSICS 
-    private Rigidbody body;
-    protected Vector3 velocity;
+    protected Rigidbody body;
 
     [SerializeField]
     protected float acceleration = 10f;
@@ -46,21 +45,22 @@ public class Entity : MonoBehaviour
         {
             Move();
         }
-        velocity *= drag;
 
-        if (velocity.magnitude > terminal_velocity)
+        body.velocity *= drag;
+
+        if (body.velocity.magnitude > terminal_velocity)
         {
-            velocity *= terminal_velocity / velocity.magnitude;
+            body.velocity *= terminal_velocity / body.velocity.magnitude;
         }
 
     }
 
-    private void FixedUpdate()
-    {
-        Vector3 position = transform.position;
-        position += velocity * Time.deltaTime;
-        body.MovePosition(position);
-    }
+    //private void FixedUpdate()
+    //{
+    //    Vector3 position = transform.position;
+    //    position += body.velocity * Time.deltaTime;
+    //    body.MovePosition(position);
+    //}
 
     // ************ DAMAGE 
     public void Damage(int damage)

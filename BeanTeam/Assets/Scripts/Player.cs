@@ -9,6 +9,6 @@ public class Player : Entity
         input.x = Input.GetAxis("Horizontal");
         input.y = 0;
         input.z = Input.GetAxis("Vertical");
-        velocity += acceleration * Time.deltaTime * input;
+        body.velocity += acceleration * Time.deltaTime * input;
     }
 }

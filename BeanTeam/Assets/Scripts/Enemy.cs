@@ -16,7 +16,7 @@ public class Enemy : Entity
         {
             Vector3 distance = player.transform.position - transform.position;
             Vector3 direction = distance / distance.magnitude;
-            velocity += direction * acceleration * Time.deltaTime;
+            body.velocity += direction * acceleration * Time.deltaTime;
         }
     }
 
