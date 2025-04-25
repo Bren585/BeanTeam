@@ -25,25 +25,7 @@ public class Enemy : Entity
         Player p = collision.gameObject.GetComponent<Player>();
         if (p != null) { p.Damage(1); }
 
-        //Projectile proj = collision.gameObject.GetComponent<Projectile>();
-        //if (proj != null)
-        //{
-        //    TakeDamage(proj.DamageAmount);
-        //    Destroy(proj.gameObject);
-        //}
     }
-    //public void TakeDamage(int amount)
-    //{
-    //    HP -= amount;
-    //    if (HP <= 0)
-    //    {
-    //        Die();
-    //    }
-    //}
-
-    //private void Die()
-    //{
-    //    Destroy(gameObject);
-    //}
+   
 }
 
