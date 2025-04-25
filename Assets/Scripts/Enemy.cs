@@ -24,7 +24,10 @@ public class Enemy : Entity
     {
         Player p = collision.gameObject.GetComponent<Player>();
         if (p != null) { p.Damage(1); }
+    }
 
+    override protected void OnDeath() {
+        GameObject.Destroy(this.gameObject); 
     }
    
 }

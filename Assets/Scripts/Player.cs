@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class Player : Entity
 {
-    public Emitter emitter;
+    private Emitter emitter;
+
+    override protected void Start()
+    {
+        emitter = GetComponent<Emitter>();
+        base.Start();
+    }
 
     protected override void Move() {
         Vector3 input;
