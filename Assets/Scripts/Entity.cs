@@ -55,12 +55,15 @@ public class Entity : MonoBehaviour
 
     }
 
-    //private void FixedUpdate()
-    //{
-    //    Vector3 position = transform.position;
-    //    position += body.velocity * Time.deltaTime;
-    //    body.MovePosition(position);
-    //}
+    // ************ MOVEMENT
+    
+    public void Teleport(Vector3 to)
+    {
+        body.position = to;
+        body.velocity = new Vector3(0, 0, 0);
+    }
+
+    public void Teleport(float x, float y, float z) { Teleport(new Vector3(x, y, z)); }
 
     // ************ DAMAGE 
     public void Damage(int damage)
