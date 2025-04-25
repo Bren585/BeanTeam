@@ -50,7 +50,7 @@ public class Trial : MonoBehaviour
                 {
                     Vector3 pos = transform.position;
                     pos.x += UnityEngine.Random.Range(-range.x, range.x);
-                    pos.y = 1;
+                    pos.y = 1.0f;
                     pos.z += UnityEngine.Random.Range(-range.y, range.y);
                     GameObject newEnemy = Instantiate(enemy_prefab, pos, Quaternion.identity);
                     Debug.Log(newEnemy != null);
@@ -99,4 +99,6 @@ public class Trial : MonoBehaviour
             status = state.WaveStart;
         }
     }
+
+    public void Reset() { status = state.Idle; }
 }
