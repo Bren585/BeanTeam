@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Windows;
 
 public class Entity : MonoBehaviour
 {
@@ -15,7 +16,8 @@ public class Entity : MonoBehaviour
     private float drag = 0.95f;
     [SerializeField]
     private float terminal_velocity = 100f;
-
+    [SerializeField]
+    protected float rotation_speed = 1.0f;
     // ************ STATUS 
 
     private bool alive;
@@ -53,6 +55,13 @@ public class Entity : MonoBehaviour
             body.velocity *= terminal_velocity / body.velocity.magnitude;
         }
 
+        Vector3 moveDir = body.velocity.normalized;
+
+        if (body.velocity.sqrMagnitude > 0.01f)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(moveDir);
+            body.rotation = Quaternion.Slerp(body.rotation, targetRotation, rotation_speed * Time.fixedDeltaTime);
+        }
     }
 
     // ************ MOVEMENT

@@ -6,11 +6,13 @@ public class Player : Entity
 {
     public Emitter emitter;
 
-    protected override void Move() {
+    protected override void Move()
+    {
         Vector3 input;
         input.x = Input.GetAxis("Horizontal");
         input.y = 0;
         input.z = Input.GetAxis("Vertical");
+
         body.velocity += acceleration * Time.deltaTime * input;
 
         if (Input.GetKeyDown(KeyCode.Z))
@@ -20,5 +22,8 @@ public class Player : Entity
             emitter.Shoot(pos, dir);
         }
     }
+
+
+
 
 }
