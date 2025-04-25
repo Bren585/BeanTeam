@@ -28,14 +28,11 @@ public class Entity : MonoBehaviour
 
 
     // ************ FUNCTIONS ********************************
-    protected virtual void Init() { }
-
-    void Start()
+    virtual protected void Start()
     {
         HP = max_HP;
         alive = true;
         body = GetComponent<Rigidbody>();
-        Init();
     }
 
     // ************ UPDATE 
@@ -84,9 +81,12 @@ public class Entity : MonoBehaviour
             Die();
         }
     }
+
+    protected virtual void OnDeath() { }
     private void Die()
     {
         alive = false;
+        OnDeath();
     }
 
     public bool IsAlive() { return alive; }

@@ -8,6 +8,7 @@ public class Trial : MonoBehaviour
     [SerializeField]
     private GameObject enemy_prefab;
     private List<Enemy> enemies;
+    private List<Enemy> dead_enemies;
 
     [SerializeField] private Vector2 range;
 
@@ -31,6 +32,7 @@ public class Trial : MonoBehaviour
         //enemy_prefab = Resources.Load("Prefabs/Enemy_PH") as GameObject;
         status = state.Idle;
         enemies = new List<Enemy>();
+        dead_enemies = new List<Enemy>();
         wave = 0;
     }
 
@@ -48,6 +50,7 @@ public class Trial : MonoBehaviour
                 {
                     Vector3 pos = transform.position;
                     pos.x += UnityEngine.Random.Range(-range.x, range.x);
+                    pos.y = 1;
                     pos.z += UnityEngine.Random.Range(-range.y, range.y);
                     GameObject newEnemy = Instantiate(enemy_prefab, pos, Quaternion.identity);
                     Debug.Log(newEnemy != null);
@@ -60,9 +63,15 @@ public class Trial : MonoBehaviour
                 {
                     if (!enemy.IsAlive())
                     {
-                        enemies.Remove(enemy);
+                        dead_enemies.Add(enemy);
                     }
                 }
+
+                foreach (Enemy enemy in dead_enemies)
+                {
+                    enemies.Remove(enemy);
+                }
+                dead_enemies.Clear();
 
                 if (enemies.Count == 0)
                 {
@@ -74,6 +83,7 @@ public class Trial : MonoBehaviour
                 if (++wave >= wave_count)
                 {
                     status = state.Finished;
+                    Debug.Log("Victory");
                     goto case state.Finished;
                 }
                 status = state.WaveStart;
@@ -87,7 +97,6 @@ public class Trial : MonoBehaviour
         if (status == state.Idle)
         {
             status = state.WaveStart;
-            //Debug.Log("triggered");
         }
     }
 }
