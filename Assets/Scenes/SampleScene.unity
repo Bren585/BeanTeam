@@ -511,7 +511,7 @@ GameObject:
   - component: {fileID: 1262501042}
   - component: {fileID: 1262501047}
   - component: {fileID: 1262501048}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy_PH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -651,6 +651,7 @@ MonoBehaviour:
   drag: 0.95
   terminal_velocity: 100
   max_HP: 1
+  hp: 30
 --- !u!1 &2070047307
 GameObject:
   m_ObjectHideFlags: 0
@@ -665,6 +666,7 @@ GameObject:
   - component: {fileID: 2070047309}
   - component: {fileID: 2070047314}
   - component: {fileID: 2070047315}
+  - component: {fileID: 2070047316}
   m_Layer: 0
   m_Name: Player_PH
   m_TagString: Untagged
@@ -760,7 +762,7 @@ Transform:
   m_GameObject: {fileID: 2070047307}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 6.36, y: 0, z: -8.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -805,6 +807,21 @@ MonoBehaviour:
   drag: 0.95
   terminal_velocity: 200
   max_HP: 1
+  emitter: {fileID: 2070047316}
+--- !u!114 &2070047316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2070047307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca212ce51e5d7464aa89565e091d8c9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 6477248635665421043, guid: 63a0b61642976604eb061c8d45cb553b, type: 3}
+  bulletSpeed: 20
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
