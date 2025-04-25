@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : Entity
 {
+    [SerializeField] private int hp = 30;
     protected Player player;
     protected override void Init()
     {
@@ -24,5 +25,26 @@ public class Enemy : Entity
     {
         Player p = collision.gameObject.GetComponent<Player>();
         if (p != null) { p.Damage(1); }
+
+        Projectile proj = collision.gameObject.GetComponent<Projectile>();
+        if (proj != null)
+        {
+            TakeDamage(proj.DamageAmount);
+            Destroy(proj.gameObject);
+        }
+    }
+    public void TakeDamage(int amount)
+    {
+        hp -= amount;
+        if (hp <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject);
     }
 }
+
