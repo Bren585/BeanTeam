@@ -5,9 +5,10 @@ using UnityEngine;
 public class Enemy : Entity
 {
     protected Player player;
-    protected override void Init()
+    protected override void Start()
     {
         player = FindFirstObjectByType<Player>();
+        base.Start();
     }
 
     override protected void Move()
