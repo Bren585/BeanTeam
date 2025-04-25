@@ -56,6 +56,14 @@ public class Trial : MonoBehaviour
                 status = state.WaveIdle;
                 goto case state.WaveIdle;
             case state.WaveIdle:
+                foreach (Enemy enemy in enemies)
+                {
+                    if (!enemy.IsAlive())
+                    {
+                        enemies.Remove(enemy);
+                    }
+                }
+
                 if (enemies.Count == 0)
                 {
                     status = state.WaveClear; 
