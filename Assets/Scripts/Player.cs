@@ -19,6 +19,11 @@ public class Player : Entity
         input.y = 0;
         input.z = Input.GetAxis("Vertical");
 
+        if (input.sqrMagnitude > 1f)
+        {
+            input = input.normalized;
+        }
+
         body.velocity += acceleration * Time.deltaTime * input;
 
         if (Input.GetKeyDown(KeyCode.Z))
@@ -28,6 +33,7 @@ public class Player : Entity
             emitter.Shoot(pos, dir);
         }
     }
+
 
 
 

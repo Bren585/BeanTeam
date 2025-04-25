@@ -269,7 +269,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c749f45ae746ae545a17efcd079633a3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.35
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c749f45ae746ae545a17efcd079633a3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -568,6 +568,52 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 517889323}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &543887201
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 543887203}
+  - component: {fileID: 543887202}
+  m_Layer: 0
+  m_Name: SceneManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &543887202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543887201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7267d495f53c49747a1407fedaa402b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameSceneName: SampleScene
+  titleSceneName: TitleScene
+--- !u!4 &543887203
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543887201}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.5276249, y: 1.0950074, z: -0.73310614}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1308,7 +1354,6 @@ MonoBehaviour:
   terminal_velocity: 1000
   rotation_speed: 1
   max_HP: 1
-  emitter: {fileID: 1494995985}
 --- !u!54 &1494995987
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1514,7 +1559,6 @@ MonoBehaviour:
   terminal_velocity: 1000
   rotation_speed: 5
   max_HP: 1
-  emitter: {fileID: 2070047316}
 --- !u!114 &2070047316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1540,3 +1584,4 @@ SceneRoots:
   - {fileID: 264357085}
   - {fileID: 197406538}
   - {fileID: 776788977}
+  - {fileID: 543887203}
