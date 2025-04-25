@@ -8,12 +8,15 @@ public class Stage : MonoBehaviour
 
     private enum state
     {
-
+        Open,
+        Closed
     };
 
     void Start()
     {
         loadingZones = GetComponentsInChildren<LoadingZone>();
+        Debug.Log(loadingZones);
+        foreach(LoadingZone LZ in loadingZones) { LZ.SetParent(this); }
     }
 
     // Update is called once per frame
@@ -21,4 +24,7 @@ public class Stage : MonoBehaviour
     {
         
     }
+
+    public Vector3 GetLoadingZone(int index) { return loadingZones[index].transform.position; }
+    public void SetLoadingZoneState(int index, bool active) { loadingZones[index].SetActive(active); }
 }
