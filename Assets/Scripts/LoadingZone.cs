@@ -9,12 +9,16 @@ public class LoadingZone : MonoBehaviour
     private bool active = true;
 
     [SerializeField]
-    private int destination_index;
+    private Direction direction;
+    //private int destination_index;
 
     private Stage parent;
 
     // Start is called before the first frame update
-    void Start() {}
+    void Start() 
+    {
+        parent = GetComponentInParent<Stage>();
+    }
 
     // Update is called once per frame
     void Update() {}
@@ -25,8 +29,9 @@ public class LoadingZone : MonoBehaviour
         Player player = collision.gameObject.GetComponent<Player>();
         if (player)
         {
-            parent.SetLoadingZoneState(destination_index, false);
-            player.Teleport(parent.GetLoadingZone(destination_index));
+            parent.MoveStage(direction);
+            //parent.SetLoadingZoneState(destination_index, false);
+            //player.Teleport(parent.GetLoadingZone(destination_index));
         }
     }
 

@@ -83,7 +83,7 @@ public class Entity : MonoBehaviour
     }
 
     protected virtual void OnDeath() { }
-    private void Die()
+    public void Die()
     {
         alive = false;
         OnDeath();

@@ -3,6 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public class TrialData
+{
+    public int wave_count;
+    public EnemyData[,] enemies;
+}
 public class Trial : MonoBehaviour
 {
     [SerializeField]
@@ -53,11 +58,11 @@ public class Trial : MonoBehaviour
                     pos.y = 1.0f;
                     pos.z += UnityEngine.Random.Range(-range.y, range.y);
                     GameObject newEnemy = Instantiate(enemy_prefab, pos, Quaternion.identity);
-                    Debug.Log(newEnemy != null);
                     enemies.Add(newEnemy.GetComponent<Enemy>());
                 }
                 status = state.WaveIdle;
-                goto case state.WaveIdle;
+                break;
+                //goto case state.WaveIdle;
             case state.WaveIdle:
                 foreach (Enemy enemy in enemies)
                 {
@@ -100,5 +105,15 @@ public class Trial : MonoBehaviour
         }
     }
 
-    public void Reset() { status = state.Idle; }
+    public void Enable() { status = state.Idle; }
+    public void Disable() { status = state.Finished; }
+
+    public void ForceClear()
+    {
+        foreach (Enemy enemy in enemies)
+        {
+            enemy.Die();
+        }
+        enemies.Clear();
+    }
 }
