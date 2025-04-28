@@ -59,6 +59,10 @@ public class Entity : MonoBehaviour
             Quaternion targetRotation = Quaternion.LookRotation(moveDir);
             body.rotation = Quaternion.Slerp(body.rotation, targetRotation, rotation_speed * Time.fixedDeltaTime);
         }
+        else 
+        {
+            body.angularVelocity = new Vector3(0, 0, 0);
+        }
     }
 
     // ************ MOVEMENT

@@ -7,7 +7,7 @@ public class Emitter : MonoBehaviour
 
     public void Shoot(Vector3 position, Vector3 direction)
     {
-        Debug.Log("Shoot(): " + position + " Å® " + direction);
+        //Debug.Log("Shoot(): " + position + " Å® " + direction);
 
         GameObject bullet = Instantiate(prefab, position, Quaternion.LookRotation(direction));
 

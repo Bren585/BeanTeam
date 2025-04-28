@@ -2,7 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyData { }
+public enum EnemyType
+{
+    Red,
+    Blue,
+    Green,
+    Yellow,
+
+    TypeCount,
+    Unset
+}
+public class EnemyData
+{ 
+    public EnemyType    type;
+    public int          level;
+    public Vector3      spawn_postition;
+
+    public EnemyData(int level, Vector3 spawn_postition)
+    {
+        this.type               = EnemyType.Unset;
+        this.level              = level;
+        this.spawn_postition    = spawn_postition;
+    }
+}
 
 public class Enemy : Entity
 {
@@ -30,8 +52,7 @@ public class Enemy : Entity
     }
 
     override protected void OnDeath() {
-        GameObject.Destroy(this.gameObject); 
+        Destroy(gameObject); 
     }
-   
 }
 

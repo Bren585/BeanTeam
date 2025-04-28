@@ -33,9 +33,4 @@ public class Player : Entity
             emitter.Shoot(pos, dir);
         }
     }
-
-
-
-
-
 }
