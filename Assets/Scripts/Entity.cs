@@ -99,14 +99,5 @@ public class Entity : MonoBehaviour
     }
 
     public bool IsAlive() { return alive; }
-<<<<<<< Updated upstream
-    public float Acceleration
-    {
-        get { return acceleration; }
-        set { acceleration = value; }
-    }
-=======
 
-  
->>>>>>> Stashed changes
 }

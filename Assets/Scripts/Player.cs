@@ -5,15 +5,7 @@ public class Player : Entity
     private Disc[] discs;
     private int equippedDisc = 0;
 
-<<<<<<< Updated upstream
-    [SerializeField]
-    private Disc[] discs;
-    private int equippedDisc = 0;
-
-    override protected void Start()
-=======
     protected override void Start()
->>>>>>> Stashed changes
     {
         base.Start();
         discs = GetComponentsInChildren<Disc>();
@@ -41,18 +33,6 @@ public class Player : Entity
             {
                 discs[equippedDisc].Shoot(pos, dir);
             }
-<<<<<<< Updated upstream
-            Debug.Log("Shoot attempted");
-        }
-
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            if (discs.Length > equippedDisc && discs[equippedDisc] != null)
-            {
-                discs[equippedDisc].Skill();
-            }
-=======
->>>>>>> Stashed changes
         }
 
         if (Input.GetKeyDown(KeyCode.X))

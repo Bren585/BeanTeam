@@ -11,11 +11,6 @@ public class Disc : Emitter
     {
         base.Shoot(position, direction);
     }
-<<<<<<< Updated upstream
-   
-}
-=======
-
     public virtual void PassiveEnter()
     {
 
@@ -26,4 +21,3 @@ public class Disc : Emitter
 
     }
 }
->>>>>>> Stashed changes
