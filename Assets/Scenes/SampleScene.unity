@@ -593,6 +593,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c749f45ae746ae545a17efcd079633a3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1494995990}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c749f45ae746ae545a17efcd079633a3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1494995993}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c749f45ae746ae545a17efcd079633a3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1494995992}
   m_SourcePrefab: {fileID: 100100000, guid: c749f45ae746ae545a17efcd079633a3, type: 3}
 --- !u!1 &273933128
 GameObject:
@@ -2111,6 +2117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 6477248635665421043, guid: 63a0b61642976604eb061c8d45cb553b, type: 3}
   bulletSpeed: 20
+  bulletDamage: 10
 --- !u!114 &1494995986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2176,6 +2183,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.2, y: 0.2, z: 0.2}
   m_Center: {x: 0, y: 0.08, z: 0}
+<<<<<<< Updated upstream
 --- !u!1 &1681062838
 GameObject:
   m_ObjectHideFlags: 0
@@ -2212,11 +2220,15 @@ Transform:
   m_Father: {fileID: 946241870}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!114 &1681062840
+=======
+--- !u!114 &1494995992
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
   m_GameObject: {fileID: 1681062838}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -2225,10 +2237,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 --- !u!65 &1681062841
 BoxCollider:
+=======
+  m_GameObject: {fileID: 1494995983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 448c769de6fb1f74d8e32682c48eaaf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 6477248635665421043, guid: 63a0b61642976604eb061c8d45cb553b, type: 3}
+  bulletSpeed: 20
+  bulletDamage: 10
+--- !u!114 &1494995993
+MonoBehaviour:
+>>>>>>> Stashed changes
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
   m_GameObject: {fileID: 1681062838}
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -2296,6 +2322,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1681062838}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+=======
+  m_GameObject: {fileID: 1494995983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c771f2652a0825f4b94853becc7c1502, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 6477248635665421043, guid: 63a0b61642976604eb061c8d45cb553b, type: 3}
+  bulletSpeed: 20
+  bulletDamage: 10
+>>>>>>> Stashed changes
 --- !u!1 &1811825076
 GameObject:
   m_ObjectHideFlags: 0
@@ -2571,8 +2608,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca212ce51e5d7464aa89565e091d8c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 6477248635665421043, guid: 63a0b61642976604eb061c8d45cb553b, type: 3}
+  prefab: {fileID: 0}
   bulletSpeed: 20
+  bulletDamage: 10
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
