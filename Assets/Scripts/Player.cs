@@ -35,11 +35,6 @@ public class Player : Entity
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-           
-
-        }
         if (Input.GetKeyDown(KeyCode.C))
         {
             // ディスクを切り替える
