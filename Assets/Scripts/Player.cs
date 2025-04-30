@@ -6,6 +6,10 @@ public class Player : Entity
 {
     private Emitter emitter;
 
+    [SerializeField]
+    private Disc[] discs;
+    private int equippedDisc = 0;
+
     override protected void Start()
     {
         emitter = GetComponent<Emitter>();
@@ -30,7 +34,19 @@ public class Player : Entity
         {
             Vector3 pos = transform.position + transform.forward;
             Vector3 dir = transform.forward;
-            emitter.Shoot(pos, dir);
+            if (discs.Length > equippedDisc && discs[equippedDisc] != null)
+            {
+                discs[equippedDisc].Shoot(pos, dir);
+            }
+            Debug.Log("Shoot attempted");
+        }
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            if (discs.Length > equippedDisc && discs[equippedDisc] != null)
+            {
+                discs[equippedDisc].Skill();
+            }
         }
     }
 }

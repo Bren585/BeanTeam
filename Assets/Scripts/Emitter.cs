@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class Emitter : MonoBehaviour
 {
-    [SerializeField] private GameObject prefab;    
-    [SerializeField] private float bulletSpeed = 20f;
+    [SerializeField] private GameObject prefab;
+    [SerializeField] protected float bulletSpeed = 20f;
+    [SerializeField] protected int bulletDamage = 10;
 
-    public void Shoot(Vector3 position, Vector3 direction)
+
+    virtual public void Shoot(Vector3 position, Vector3 direction)
     {
         //Debug.Log("Shoot(): " + position + " Å® " + direction);
 
