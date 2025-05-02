@@ -3,8 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
-    public string gameSceneName = "GameScene";
-    public string titleSceneName = "TitleScene";
+    static public string gameSceneName = "SampleScene";
+    static public string titleSceneName = "TitleScene";
 
     void Update()
     {

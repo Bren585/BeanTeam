@@ -8,26 +8,29 @@ public class Spawner : MonoBehaviour
     [SerializeField]
     private GameObject enemy_prefab;
 
-    private float timer;
-    private Enemy enemy;
+    private float   timer;
+    private bool    active;
+    private Enemy   enemy;
 
-    // Start is called before the first frame update
     void Start() { }
 
-    // Update is called once per frame
     void Update()
     {
         timer -= Time.deltaTime;
         if (timer < 0)
         {
-            enemy.gameObject.SetActive(true);
-            Destroy(gameObject);
+            if (!active)
+            { 
+                enemy.gameObject.SetActive(true);
+                active = true;
+            }
+            if (timer < -0.5) Destroy(gameObject);
         }
     }
 
     public void Init(EnemyData data, float timer = 1.0f)
     {
-        transform.position += new Vector3(UnityEngine.Random.Range(1.0f, -1.0f), 0, UnityEngine.Random.Range(1.0f, -1.0f));  
+        transform.position += new Vector3(UnityEngine.Random.Range(1.0f, -1.0f), 0.2f, UnityEngine.Random.Range(1.0f, -1.0f));  
 
         enemy = Instantiate(
             enemy_prefab, 
@@ -36,6 +39,7 @@ public class Spawner : MonoBehaviour
         ).GetComponent<Enemy>();
 
         enemy.gameObject.SetActive(false);
+        active = false;
 
         this.timer = timer;
     }

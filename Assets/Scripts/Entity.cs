@@ -7,6 +7,8 @@ public class Entity : MonoBehaviour
 {
     // ************ MEMBERS ********************************
 
+    protected Animator animator;
+
     // ************ PHYSICS 
     protected Rigidbody body;
 
@@ -18,8 +20,11 @@ public class Entity : MonoBehaviour
     private float terminal_velocity = 100f;
     [SerializeField]
     protected float rotation_speed = 1.0f;
+
     // ************ STATUS 
 
+    [SerializeField]
+    private float despawn_timer;
     private bool alive;
     private int HP;
 
@@ -38,17 +43,28 @@ public class Entity : MonoBehaviour
         HP = max_HP;
         alive = true;
         body = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
     }
 
     // ************ UPDATE 
     protected virtual void Move() { }
+    protected virtual void Animate() { }
 
     void Update()
     {
         if (alive)
         {
             Move();
+        } 
+        else
+        {
+            despawn_timer -= Time.deltaTime;
+            if (despawn_timer < 0)
+            {
+                Destroy(gameObject);
+            }
         }
+        Animate();
 
         body.velocity *= drag;
 
