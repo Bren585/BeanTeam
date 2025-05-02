@@ -1,15 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : Entity
 {
-    private Emitter emitter;
+    private Disc[] discs;
+    private int equippedDisc = 0;
 
-    override protected void Start()
+    protected override void Start()
     {
-        emitter = GetComponent<Emitter>();
         base.Start();
+        discs = GetComponentsInChildren<Disc>();
     }
 
     protected override void Move()
@@ -30,7 +29,24 @@ public class Player : Entity
         {
             Vector3 pos = transform.position + transform.forward;
             Vector3 dir = transform.forward;
-            emitter.Shoot(pos, dir);
+            if (discs.Length > equippedDisc && discs[equippedDisc] != null)
+            {
+                discs[equippedDisc].Shoot(pos, dir);
+            }
         }
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            // ディスクを切り替える
+            discs[equippedDisc].PassiveExit();
+            equippedDisc = (equippedDisc + 1) % discs.Length;
+            discs[equippedDisc].PassiveEnter();
+            // 新しいディスクでスキルを発動
+            if (discs.Length > equippedDisc && discs[equippedDisc] != null)
+            {
+                discs[equippedDisc].Skill();
+            }
+        }
+
     }
 }

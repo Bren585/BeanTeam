@@ -26,6 +26,11 @@ public class Entity : MonoBehaviour
     [SerializeField]
     private int max_HP = 1;
 
+    public float Acceleration
+    {
+        get { return acceleration; }
+        set { acceleration = value; }
+    }
 
     // ************ FUNCTIONS ********************************
     virtual protected void Start()
@@ -94,4 +99,5 @@ public class Entity : MonoBehaviour
     }
 
     public bool IsAlive() { return alive; }
+
 }
