@@ -28,10 +28,21 @@ public class EnemyData
 
 public class Enemy : Entity
 {
-    protected Player player;
+    protected   Player      player;
+
+    protected enum Animation { 
+        Idle,
+        Walk,
+        Attack,
+        Death
+    }
+
+    protected Animation animation_state;
+
     protected override void Start()
     {
         player = FindFirstObjectByType<Player>();
+        animation_state = Animation.Idle;
         base.Start();
     }
 
@@ -45,6 +56,11 @@ public class Enemy : Entity
         }
     }
 
+    protected override void Animate()
+    {
+        animator.SetInteger("State", (int)animation_state);
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         Player p = collision.gameObject.GetComponent<Player>();
@@ -52,7 +68,9 @@ public class Enemy : Entity
     }
 
     override protected void OnDeath() {
-        Destroy(gameObject); 
+        animation_state = Animation.Death;
+        animator.SetTrigger("Die");
+        GetComponent<CapsuleCollider>().enabled = false;
     }
 }
 

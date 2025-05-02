@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="Background" style="flex-grow: 1; align-items: center;">
+        <ui:Label text="Game" name="Title" style="-unity-text-align: upper-center; font-size: 100px;" />
+        <ui:Button text="Start" name="Start" style="width: 200px; align-items: auto;" />
+        <ui:Button text="Tutorial" name="Tutorial" style="width: 200px; align-items: auto;" />
+        <ui:Button text="Credits" name="Credits" style="width: 200px; align-items: auto;" />
+    </ui:VisualElement>
+</ui:UXML>

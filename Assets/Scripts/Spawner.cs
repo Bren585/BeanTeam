@@ -12,10 +12,8 @@ public class Spawner : MonoBehaviour
     private bool    active;
     private Enemy   enemy;
 
-    // Start is called before the first frame update
     void Start() { }
 
-    // Update is called once per frame
     void Update()
     {
         timer -= Time.deltaTime;
@@ -32,7 +30,7 @@ public class Spawner : MonoBehaviour
 
     public void Init(EnemyData data, float timer = 1.0f)
     {
-        transform.position += new Vector3(UnityEngine.Random.Range(1.0f, -1.0f), 0, UnityEngine.Random.Range(1.0f, -1.0f));  
+        transform.position += new Vector3(UnityEngine.Random.Range(1.0f, -1.0f), 0.2f, UnityEngine.Random.Range(1.0f, -1.0f));  
 
         enemy = Instantiate(
             enemy_prefab, 
