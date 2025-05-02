@@ -8,8 +8,9 @@ public class Spawner : MonoBehaviour
     [SerializeField]
     private GameObject enemy_prefab;
 
-    private float timer;
-    private Enemy enemy;
+    private float   timer;
+    private bool    active;
+    private Enemy   enemy;
 
     // Start is called before the first frame update
     void Start() { }
@@ -20,8 +21,12 @@ public class Spawner : MonoBehaviour
         timer -= Time.deltaTime;
         if (timer < 0)
         {
-            enemy.gameObject.SetActive(true);
-            Destroy(gameObject);
+            if (!active)
+            { 
+                enemy.gameObject.SetActive(true);
+                active = true;
+            }
+            if (timer < -0.5) Destroy(gameObject);
         }
     }
 
@@ -36,6 +41,7 @@ public class Spawner : MonoBehaviour
         ).GetComponent<Enemy>();
 
         enemy.gameObject.SetActive(false);
+        active = false;
 
         this.timer = timer;
     }
