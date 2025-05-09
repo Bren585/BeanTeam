@@ -71,6 +71,7 @@ public class Enemy : Entity
         animation_state = Animation.Death;
         animator.SetTrigger("Die");
         GetComponent<CapsuleCollider>().enabled = false;
+        GetComponent<ParticleSystem>().Play();
     }
 }
 

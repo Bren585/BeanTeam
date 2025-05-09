@@ -12,6 +12,8 @@ public class Trial : MonoBehaviour
 
     [SerializeField] private Vector2 range;
 
+    private Prize prize;
+
     private enum state
     {   
         Idle,
@@ -77,6 +79,8 @@ public class Trial : MonoBehaviour
                 {
                     status = state.Finished;
                     GetComponentInParent<Stage>().OpenDoors();
+                    if (prize) prize.gameObject.SetActive(true);
+                    Debug.Log("Prize Spawned");
                     goto case state.Finished;
                 }
                 status = state.WaveStart;
@@ -96,6 +100,17 @@ public class Trial : MonoBehaviour
     }
 
     public void LoadEnemies(Direction d, List<List<EnemyData>> data) { player_entrance = d; TrialData = data; }
+    public void LoadPrize(DiscType disc) { 
+        if (prize) prize.gameObject.SetActive(false);
+        switch (disc)
+        {
+            default:
+                prize = FindFirstObjectByType<Prize>(FindObjectsInactive.Include);
+                break;
+        }
+        if (prize) prize.gameObject.SetActive(false);
+        Debug.Log("Prize Loaded : " + (bool)prize);
+    } 
     public void Enable() { status = state.Idle; }
     public void Disable() { status = state.Finished; }
 
@@ -110,5 +125,6 @@ public class Trial : MonoBehaviour
         {
             Destroy(spawner.gameObject);
         }
+        if (prize) prize.gameObject.SetActive(false);
     }
 }

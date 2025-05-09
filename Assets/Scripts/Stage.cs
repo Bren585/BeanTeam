@@ -8,7 +8,6 @@ using UnityEngine;
 using UnityEngine.TextCore.Text;
 
 public enum Direction { North, East, South, West };
-
 public enum SpawnPattern 
 { 
     Rows, 
@@ -31,7 +30,7 @@ public enum StageType
     Green,
     Blue,
     Yellow,
-    None,
+    Mixed,
     Empty,
 
     TypeCount
@@ -153,28 +152,40 @@ public class StageData {
     public StageData Init(int level)
     {
         cleared = false;
-        type = (StageType)UnityEngine.Random.Range(0, (int)StageType.TypeCount);
+        float rng = UnityEngine.Random.Range(0.0f, 1.0f);
 
-        switch (type) {
+        if      (rng < 0.2f) { type = StageType.Red;    }
+        else if (rng < 0.4f) { type = StageType.Green;  }
+        else if (rng < 0.6f) { type = StageType.Blue;   }
+        else if (rng < 0.8f) { type = StageType.Yellow; }
+        else if (rng < 0.9f) { type = StageType.Mixed;  }
+        else                 { type = StageType.Empty;  }
+
+        switch (type)
+        {
             case StageType.Empty:
                 cleared = true;
                 break;
-            case StageType.None:
+            case StageType.Mixed:
             case StageType.Red:
             case StageType.Green:
             case StageType.Blue:
             case StageType.Yellow:
                 MakeEnemies(level);
-                foreach (List<EnemyData> wave in TrialData) { foreach (EnemyData enemy in wave) { 
-                    if (type == StageType.None)
+                foreach (List<EnemyData> wave in TrialData)
+                {
+                    foreach (EnemyData enemy in wave)
                     {
-                        enemy.type = (EnemyType)UnityEngine.Random.Range(0, (int)EnemyType.TypeCount);
+                        if (type == StageType.Mixed)
+                        {
+                            enemy.type = (EnemyType)UnityEngine.Random.Range(0, (int)EnemyType.TypeCount);
+                        }
+                        else
+                        {
+                            enemy.type = (EnemyType)type;
+                        }
                     }
-                    else 
-                    { 
-                        enemy.type = (EnemyType)type; 
-                    } 
-                } }
+                }
                 break;
         }
         return this;
@@ -243,7 +254,16 @@ public class Stage : MonoBehaviour
         }
 
         if (stage.cleared) { trial.Disable(); }
-        else { trial.Enable(); trial.LoadEnemies(entrance, stage.TrialData); }
+        else 
+        { 
+            trial.Enable(); 
+            trial.LoadEnemies(entrance, stage.TrialData); 
+            if (stage.type != StageType.Mixed) trial.LoadPrize((DiscType)stage.type);
+            else
+            {
+                trial.LoadPrize((DiscType)UnityEngine.Random.Range(1, (int)DiscType.Count));
+            }
+        }
     }
 
     //public Vector3 GetLoadingZone(int index) { return loadingZones[index].transform.position; }

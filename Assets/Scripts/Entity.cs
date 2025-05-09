@@ -9,6 +9,8 @@ public class Entity : MonoBehaviour
 
     protected Animator animator;
 
+    private Vector3 default_scale;
+
     // ************ PHYSICS 
     protected Rigidbody body;
 
@@ -25,6 +27,8 @@ public class Entity : MonoBehaviour
 
     [SerializeField]
     private float despawn_timer;
+    private float despawn_timer_max;
+
     private bool alive;
     private int HP;
 
@@ -44,6 +48,8 @@ public class Entity : MonoBehaviour
         alive = true;
         body = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        despawn_timer_max = despawn_timer;
+        default_scale = transform.localScale;
     }
 
     // ************ UPDATE 
@@ -59,6 +65,9 @@ public class Entity : MonoBehaviour
         else
         {
             despawn_timer -= Time.deltaTime;
+            float despawn_percent = despawn_timer / despawn_timer_max * 4;
+            if (despawn_percent > 1) { despawn_percent = 1; }
+            transform.localScale = new Vector3 (despawn_percent * default_scale.x, despawn_percent * default_scale.y, despawn_percent * default_scale.z);
             if (despawn_timer < 0)
             {
                 Destroy(gameObject);
@@ -113,7 +122,6 @@ public class Entity : MonoBehaviour
         alive = false;
         OnDeath();
     }
-
     public bool IsAlive() { return alive; }
 
 }
