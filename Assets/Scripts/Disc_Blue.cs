@@ -1,38 +1,57 @@
-using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Disc_Blue : Disc
 {
-    public float burstInterval = 0.1f; 
-    public int burstCount = 3;         
+    public GameObject orbitBulletPrefab;
+    [SerializeField] private int bulletCount = 8;         // 弾数を8に変更
+    [SerializeField] private float orbitRadius = 3.5f;    // 半径を広く
+    [SerializeField] private float rotationSpeed = 100f;
 
-    public override void Shoot(Vector3 position, Vector3 direction)
-    {
-        StartCoroutine(BurstShoot(position, direction));
-    }
+    private List<GameObject> orbitBullets = new List<GameObject>();
+    private float currentAngle = 0f;
+    private Transform playerTransform;
 
-    private IEnumerator BurstShoot(Vector3 position, Vector3 direction)
+    private void Update()
     {
-        for (int i = 0; i < burstCount; i++)
+        if (orbitBullets.Count == 0) return;
+        currentAngle += rotationSpeed * Time.deltaTime;
+
+        for (int i = 0; i < orbitBullets.Count; i++)
         {
-            base.Shoot(position, direction);
-            yield return new WaitForSeconds(burstInterval);
+            float angle = currentAngle + (360f / bulletCount) * i;
+            float rad = angle * Mathf.Deg2Rad;
+            Vector3 offset = new Vector3(Mathf.Cos(rad), 0, Mathf.Sin(rad)) * orbitRadius;
+            orbitBullets[i].transform.position = playerTransform.position + offset;
         }
-    }
-
-    public override void PassiveEnter()
-    {
-        Debug.Log("青パッシブ");
-    }
-    public override void PassiveExit()
-    {
-        Debug.Log("青パッシブ終わり");
-        // パッシブ終了処理
     }
 
     public override void Skill()
     {
-        Debug.Log("青ディスクスキル");
-        // スキルがあれば後で追加
+        if (orbitBullets.Count > 0) return;
+
+        if (playerTransform == null)
+            playerTransform = GetComponentInParent<Player>()?.transform;
+
+        if (playerTransform == null)
+        {
+            Debug.LogWarning("Player Transform が見つかりませんでした");
+            return;
+        }
+
+        for (int i = 0; i < bulletCount; i++)
+        {
+            GameObject bullet = Instantiate(orbitBulletPrefab);
+            orbitBullets.Add(bullet);
+        }
+    }
+
+    public override void PassiveExit()
+    {
+        foreach (var bullet in orbitBullets)
+        {
+            Destroy(bullet);
+        }
+        orbitBullets.Clear();
     }
 }

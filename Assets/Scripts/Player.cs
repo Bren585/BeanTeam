@@ -1,15 +1,19 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : Entity
 {
+    //private List<Disc> discs = new List<Disc>();
     private Disc[] discs;
     private int equippedDisc = 0;
-   
+
+
     protected override void Start()
-    {
+    {  
         base.Start();
-        discs = GetComponentsInChildren<Disc>();
+        discs = new Disc[3];
+        discs[0] = GetComponentInChildren<Disc_Purple>();
+        equippedDisc = 0;
     }
 
     protected override void Move()
@@ -35,37 +39,53 @@ public class Player : Entity
                 discs[equippedDisc].Shoot(pos, dir);
             }
         }
+        if (Input.GetKeyDown(KeyCode.R)) TryAddDisc<Disc_Red>();
+        if (Input.GetKeyDown(KeyCode.B)) TryAddDisc<Disc_Blue>();
+        if (Input.GetKeyDown(KeyCode.G)) TryAddDisc<Disc_Green>();
+        if (Input.GetKeyDown(KeyCode.Y)) TryAddDisc<Disc_Yellow>();
+        if (Input.GetKeyDown(KeyCode.P)) TryAddDisc<Disc_Purple>();
 
         if (Input.GetKeyDown(KeyCode.C))
         {
-            // ƒfƒBƒXƒN‚ğØ‚è‘Ö‚¦‚é
-            discs[equippedDisc].PassiveExit();
-            equippedDisc = (equippedDisc + 1) % discs.Length;
-            discs[equippedDisc].PassiveEnter();
-            // V‚µ‚¢ƒfƒBƒXƒN‚ÅƒXƒLƒ‹‚ğ”­“®
-            if (discs.Length > equippedDisc && discs[equippedDisc] != null)
+            if (discs[1] != null && discs[2] != null)
             {
-                discs[equippedDisc].Skill();
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            Debug.Log("1ƒL[");
-            // Šù‚ÉƒfƒBƒXƒN‚ª1ŒÂˆÈã‚È‚çÔƒfƒBƒXƒN‚ğ’Ç‰Á
-            if (discs.Length == 0)
-            {
-                Disc_Red redDisc = Object.FindFirstObjectByType<Disc_Red>();
-                if (redDisc != null)
+                // é€šå¸¸ã® 1â‡„2 åˆ‡ã‚Šæ›¿ãˆ
+                if (equippedDisc != 1 && equippedDisc != 2)
                 {
-                    AddDisc(redDisc); // ÔƒfƒBƒXƒN‚ğ’Ç‰Á
-                    redDisc.PassiveEnter(); // ÔƒfƒBƒXƒN‚ÌŒø‰Ê‚ğ“K—p
-                    equippedDisc = discs.Length - 1; // ÔƒfƒBƒXƒN‚ğ‘•”õ
+                    equippedDisc = 1;
+                    discs[equippedDisc].PassiveEnter();
                 }
                 else
                 {
-                    Debug.LogError("ÔƒfƒBƒXƒN‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñB");
+                    discs[equippedDisc].PassiveExit();
+                    equippedDisc = (equippedDisc == 1) ? 2 : 1;
+                    discs[equippedDisc].PassiveEnter();
                 }
+
+                discs[equippedDisc].Skill();
+                Debug.Log("Cã‚­ãƒ¼ï¼š1â‡„2 åˆ‡ã‚Šæ›¿ãˆ -> Slot " + equippedDisc);
+            }
+            else if (discs[1] != null ^ discs[2] != null) // ã©ã¡ã‚‰ã‹1ã¤ã ã‘ã‚ã‚‹
+            {
+                int other = (discs[1] != null) ? 1 : 2;
+
+                if (equippedDisc == 0)
+                {
+                    equippedDisc = other;
+                    discs[equippedDisc].PassiveEnter();
+                }
+                else if (equippedDisc == other)
+                {
+                    discs[equippedDisc].PassiveExit();
+                    equippedDisc = 0;
+                }
+
+                discs[equippedDisc].Skill();
+                Debug.Log("Cã‚­ãƒ¼ï¼š0â‡„" + other + " åˆ‡ã‚Šæ›¿ãˆ -> Slot " + equippedDisc);
+            }
+            else
+            {
+                Debug.Log("Cã‚­ãƒ¼ï¼šåˆ‡ã‚Šæ›¿ãˆã§ãã‚‹ãƒ‡ã‚£ã‚¹ã‚¯ãŒãªã„");
             }
         }
 
@@ -73,18 +93,29 @@ public class Player : Entity
     }
     public void AddDisc(Disc newDisc)
     {
-        // V‚µ‚¢ƒfƒBƒXƒN‚ğƒvƒŒƒCƒ„[‚ÌƒfƒBƒXƒNƒŠƒXƒg‚É’Ç‰Á
-        List<Disc> discList = new List<Disc>(discs);  // Šù‘¶‚ÌƒfƒBƒXƒN‚ğˆê“I‚ÉƒŠƒXƒg‚É•ÏŠ·
-        discList.Add(newDisc);  // V‚µ‚¢ƒfƒBƒXƒN‚ğ’Ç‰Á
+        int slot = (discs[1] == null) ? 1 :
+                   (discs[2] == null) ? 2 : -1;
 
-        // XV‚µ‚½ƒŠƒXƒg‚ğÄ“x”z—ñ‚É•ÏŠ·‚µ‚Äİ’è
-        discs = discList.ToArray();
-
-        // ’Ç‰Á‚³‚ê‚½ƒfƒBƒXƒN‚ªÅ‰‚ÌƒfƒBƒXƒN‚È‚çA‚»‚ê‚ğ‘•”õ
-        if (discs.Length == 1)
+        if (slot == -1)
         {
-            equippedDisc = 0;
-            discs[equippedDisc].PassiveEnter();  // V‚µ‚¢ƒfƒBƒXƒN‚ÌŒø‰Ê‚ğ“K—p
+            // discs[1]ã‚’å‰Šé™¤ã—ã€discs[2]ã‚’å·¦ã«ã‚¹ãƒ©ã‚¤ãƒ‰
+            discs[1].PassiveExit();
+            Destroy(discs[1].gameObject);
+            discs[1] = discs[2];
+            discs[2] = null;
+            slot = 2;
         }
+
+        discs[slot] = newDisc;
+        equippedDisc = slot;
+        newDisc.PassiveEnter();
     }
+
+    private void TryAddDisc<T>() where T : Disc
+    {
+        T foundDisc = Object.FindFirstObjectByType<T>();
+        if (foundDisc != null)
+            AddDisc(foundDisc);
+    }
+
 }

@@ -1,23 +1,10 @@
-using System.Collections;
 using UnityEngine;
 
 public class Disc_Purple : Disc
 {
-    public float burstInterval = 0.3f;  // 少し長めの間隔
-    public int burstCount = 5;          // 5発バースト
-
     public override void Shoot(Vector3 position, Vector3 direction)
     {
-        StartCoroutine(BurstShoot(position, direction));
-    }
-
-    private IEnumerator BurstShoot(Vector3 position, Vector3 direction)
-    {
-        for (int i = 0; i < burstCount; i++)
-        {
-            base.Shoot(position, direction);
-            yield return new WaitForSeconds(burstInterval);
-        }
+        base.Shoot(position, direction); // ← 通常の1発発射
     }
 
     public override void PassiveEnter()
@@ -35,6 +22,7 @@ public class Disc_Purple : Disc
     public override void Skill()
     {
         Debug.Log("紫ディスクスキル");
+
         // スキルがあれば後で追加
     }
 }

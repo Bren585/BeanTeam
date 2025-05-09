@@ -2,22 +2,25 @@ using UnityEngine;
 
 public class Disc : Emitter
 {
-    public virtual void Skill()
+    public AudioClip shootSound;
+    private AudioSource audioSource;
+
+    protected virtual void Start()
     {
-        Debug.Log("Null Skill");
+        audioSource = GetComponent<AudioSource>();
     }
+
 
     public override void Shoot(Vector3 position, Vector3 direction)
     {
+        if (audioSource != null && shootSound != null)
+        {
+            audioSource.PlayOneShot(shootSound);
+        }
         base.Shoot(position, direction);
     }
-    public virtual void PassiveEnter()
-    {
 
-    }
-
-    public virtual void PassiveExit()
-    {
-
-    }
+    public virtual void Skill() { }
+    public virtual void PassiveEnter() { }
+    public virtual void PassiveExit() { }
 }
