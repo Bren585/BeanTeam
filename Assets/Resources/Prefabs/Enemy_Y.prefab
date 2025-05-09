@@ -181,8 +181,8 @@ MonoBehaviour:
   drag: 0.95
   terminal_velocity: 100
   rotation_speed: 1
-  damageSound: {fileID: 0}
-  dieSound: {fileID: 0}
+  damageSound: {fileID: 8300000, guid: b3f525e15cd7d28408add4ae5e3183f4, type: 3}
+  dieSound: {fileID: 8300000, guid: b16172d22b64b7d4d87925320dbcc458, type: 3}
   cussetSound: {fileID: 0}
   despawn_timer: 4
   max_HP: 1

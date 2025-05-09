@@ -82,9 +82,9 @@ public class Entity : MonoBehaviour
             float delta_percent = Time.deltaTime * 2 / despawn_timer_max;
             transform.rotation *= Quaternion.AngleAxis(delta_percent * 90, new Vector3(-1, 0, 0));
 
-            if (despawn_timer < 0)
+            if (despawn_timer < 0.0f)
             {
-                Destroy(gameObject, dieSound.length);
+                Destroy(gameObject,0.1f);
             }
         }
         Animate();
