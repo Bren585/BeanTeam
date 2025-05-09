@@ -1,6 +1,18 @@
-﻿using System.Collections.Generic;
+
+using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
+public enum DiscType
+{
+    Red,
+    Green,
+    Blue,
+    Yellow,
+    Purple,
+
+    Count
+}
 public class Player : Entity
 {
     //private List<Disc> discs = new List<Disc>();
