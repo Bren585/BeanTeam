@@ -4,17 +4,28 @@ using UnityEngine;
 public class Disc_Blue : Disc
 {
     public GameObject orbitBulletPrefab;
-    [SerializeField] private int bulletCount = 8;         // 弾数を8に変更
-    [SerializeField] private float orbitRadius = 3.5f;    // 半径を広く
+    [SerializeField] private int bulletCount = 8;
+    [SerializeField] private float orbitRadius = 3.5f;
     [SerializeField] private float rotationSpeed = 100f;
 
     private List<GameObject> orbitBullets = new List<GameObject>();
     private float currentAngle = 0f;
     private Transform playerTransform;
 
+    private void Awake()
+    {
+        // プレイヤーのTransform取得
+        playerTransform = GetComponentInParent<Player>()?.transform;
+        if (playerTransform == null)
+        {
+            Debug.LogWarning("Player Transform が見つかりませんでした");
+        }
+    }
+
     private void Update()
     {
-        if (orbitBullets.Count == 0) return;
+        if (orbitBullets.Count == 0 || playerTransform == null) return;
+
         currentAngle += rotationSpeed * Time.deltaTime;
 
         for (int i = 0; i < orbitBullets.Count; i++)
@@ -26,24 +37,22 @@ public class Disc_Blue : Disc
         }
     }
 
-    public override void Skill()
+    public override void Shoot(Vector3 position, Vector3 direction)
     {
-        if (orbitBullets.Count > 0) return;
-
-        if (playerTransform == null)
-            playerTransform = GetComponentInParent<Player>()?.transform;
-
         if (playerTransform == null)
         {
-            Debug.LogWarning("Player Transform が見つかりませんでした");
             return;
         }
 
+        if (orbitBullets.Count > 0) return; // すでに生成済みならスキップ
+
         for (int i = 0; i < bulletCount; i++)
         {
-            GameObject bullet = Instantiate(orbitBulletPrefab);
+            GameObject bullet = Instantiate(orbitBulletPrefab, playerTransform.position, Quaternion.identity);
             orbitBullets.Add(bullet);
         }
+
+        currentAngle = 0f; // 初期角度にリセット
     }
 
     public override void PassiveExit()

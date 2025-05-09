@@ -1,10 +1,13 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Projectile : MonoBehaviour
 {
     [SerializeField] private float lifeTime = 3f;
-    [SerializeField] private int damageAmount = 10;
-    [SerializeField] private float moveSpeed = 20f; 
+    [SerializeField] protected int damageAmount = 10;
+    [SerializeField] private float moveSpeed = 20f;
+    [SerializeField] protected AudioClip hitSound;
+    protected AudioSource audioSource;
 
     private Vector3 direction; 
 
@@ -12,6 +15,7 @@ public class Projectile : MonoBehaviour
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         Destroy(gameObject, lifeTime);
     }
 
@@ -23,10 +27,24 @@ public class Projectile : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         var e = collision.gameObject.GetComponent<Enemy>();
-        if (e != null) e.Damage(damageAmount);
+        if (e != null)
+        {
+            e.Damage(damageAmount);
 
+            // ÉqÉbÉgâπÇñ¬ÇÁÇ∑
+            if (hitSound != null && audioSource != null)
+            {
+                audioSource.PlayOneShot(hitSound);
+                Destroy(gameObject, hitSound.length); // âπÇ™èIÇÌÇÈÇ‹Ç≈ë“Ç¬
+                return;
+            }
+        }
+
+        // âπÇ™ñ≥Ç¢èÍçáÇÕÇ∑ÇÆÇ…îjä¸
         Destroy(gameObject);
     }
+
+
 
     public void Initialize(Vector3 dir, float speed, int damage)
     {

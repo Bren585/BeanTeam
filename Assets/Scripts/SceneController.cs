@@ -12,13 +12,28 @@ public class SceneController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Return))
             {
-                SceneManager.LoadScene(gameSceneName);
+                TitleBGMManager bgm = FindFirstObjectByType<TitleBGMManager>();
+                if (bgm != null)
+                {
+                    bgm.FadeOutAndLoadScene(gameSceneName);
+                }
+                else
+                {
+                    SceneManager.LoadScene(gameSceneName);
+                }
             }
         }
         else if (SceneManager.GetActiveScene().name == gameSceneName)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
+                // タイトルに戻る前にBGMオブジェクトを破棄
+                TitleBGMManager existingBGM = FindFirstObjectByType<TitleBGMManager>(); 
+                if (existingBGM != null)
+                {
+                    Destroy(existingBGM.gameObject);
+                }
+
                 SceneManager.LoadScene(titleSceneName);
             }
         }

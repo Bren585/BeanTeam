@@ -59,8 +59,13 @@ public class Player : Entity
 
         if (Input.GetKeyDown(KeyCode.C))
         {
+            
             if (discs[1] != null && discs[2] != null)
             {
+                if (cussetSound != null && audioSource != null)
+                {
+                    audioSource.PlayOneShot(cussetSound);
+                }
                 // 通常の 1⇄2 切り替え
                 if (equippedDisc != 1 && equippedDisc != 2)
                 {
@@ -79,6 +84,10 @@ public class Player : Entity
             }
             else if (discs[1] != null ^ discs[2] != null) // どちらか1つだけある
             {
+                if (cussetSound != null && audioSource != null)
+                {
+                    audioSource.PlayOneShot(cussetSound);
+                }
                 int other = (discs[1] != null) ? 1 : 2;
 
                 if (equippedDisc == 0)

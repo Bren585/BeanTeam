@@ -1,15 +1,26 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
-public class OrbitingShield : MonoBehaviour
+public class OrbitingShield : Projectile
 {
-    [SerializeField] private int damageAmount = 10;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        var enemy = other.GetComponent<Enemy>();
-        if (enemy != null)
+        var e = collision.gameObject.GetComponent<Enemy>();
+        if (e != null)
         {
-            enemy.Damage(damageAmount);
+            e.Damage(damageAmount);
+
+            // ƒqƒbƒg‰¹‚ğ–Â‚ç‚·
+            if (hitSound != null && audioSource != null)
+            {
+                audioSource.PlayOneShot(hitSound);
+                Destroy(gameObject, hitSound.length); // ‰¹‚ªI‚í‚é‚Ü‚Å‘Ò‚Â
+                return;
+            }
         }
+
+        // ‰¹‚ª–³‚¢ê‡‚Í‚·‚®‚É”jŠü
+        Destroy(gameObject);
     }
 }

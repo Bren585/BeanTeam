@@ -22,7 +22,14 @@ public class Entity : MonoBehaviour
     private float terminal_velocity = 100f;
     [SerializeField]
     protected float rotation_speed = 1.0f;
+    [SerializeField]
+    private AudioClip damageSound;
+    [SerializeField] 
+    private AudioClip dieSound;
+    [SerializeField] 
+    protected AudioClip cussetSound;
 
+    protected AudioSource audioSource;
     // ************ STATUS 
 
     [SerializeField]
@@ -50,6 +57,7 @@ public class Entity : MonoBehaviour
         animator = GetComponent<Animator>();
         despawn_timer_max = despawn_timer;
         default_scale = transform.localScale;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // ************ UPDATE 
@@ -70,7 +78,7 @@ public class Entity : MonoBehaviour
             transform.localScale = new Vector3 (despawn_percent * default_scale.x, despawn_percent * default_scale.y, despawn_percent * default_scale.z);
             if (despawn_timer < 0)
             {
-                Destroy(gameObject);
+                Destroy(gameObject, dieSound.length);
             }
         }
         Animate();
@@ -108,6 +116,10 @@ public class Entity : MonoBehaviour
     // ************ DAMAGE 
     public void Damage(int damage)
     {
+        if (damageSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(damageSound);
+        }
         HP -= damage;
         if (HP <= 0)
         {
@@ -119,8 +131,13 @@ public class Entity : MonoBehaviour
     protected virtual void OnDeath() { }
     public void Die()
     {
+        if (dieSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(dieSound);
+        }
         alive = false;
         OnDeath();
+       
     }
     public bool IsAlive() { return alive; }
 
