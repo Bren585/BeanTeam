@@ -23,7 +23,7 @@ public class Prize : MonoBehaviour
     {
         Player player = GetComponent<Player>();
         if (player != null) {
-            Debug.Log("Add Disc " + disc);
+            player.AddDiscType(disc);
         }
         gameObject.SetActive(false);
     }

@@ -4,6 +4,44 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    public void Close() { this.gameObject.SetActive(true); }
-    public void Open() { this.gameObject.SetActive(false); }
+    [SerializeField] float speed = 0.2f;
+
+    private bool open;
+    private Vector3 pos;
+    private float open_y = -5.1f;
+    private float close_y = 1.5f;
+
+    private void Start()
+    {
+        pos = transform.position;
+    }
+    private void Update()
+    {
+        if (open)
+        {
+            if (pos.y > open_y) { pos.y -= speed; }
+        }
+        else
+        {
+            if (pos.y < close_y) { pos.y += speed; }
+        }
+        transform.position = pos;
+    }
+    public void Close() {
+        open = false; 
+    }
+    public void SetClose()
+    {
+        open = false;
+        pos.y = 0.15f;
+    }
+    public void Open() {
+        open = true;
+    }
+    public void SetOpen()
+    {
+        open = true;
+        pos.y = -0.51f;
+        Debug.Log("open");
+    }
 }

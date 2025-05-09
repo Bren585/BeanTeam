@@ -33,6 +33,12 @@ public class Disc_Green : Disc
 
     public override void Skill()
     {
+        Player player = FindFirstObjectByType<Player>();
+        foreach (Enemy enemy in FindObjectsByType<Enemy>(FindObjectsSortMode.None))
+        {
+            enemy.AddImpulse(player.transform.forward * player.Acceleration * Time.deltaTime * 100);
+        }
+
         Debug.Log("緑ディスクスキル");
         // スキル処理を後で追加する場合
     }

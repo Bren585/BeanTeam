@@ -226,7 +226,7 @@ public class Stage : MonoBehaviour
 
         stages_cleared = 0;
 
-        OpenDoors();
+        SetOpenDoors();
     }
 
     // Update is called once per frame
@@ -268,6 +268,7 @@ public class Stage : MonoBehaviour
 
     //public Vector3 GetLoadingZone(int index) { return loadingZones[index].transform.position; }
     //public void SetLoadingZoneState(int index, bool active) { loadingZones[index].SetActive(active); }
+    public void SetOpenDoors() { foreach (Door door in GetComponentsInChildren<Door>(true)) { door.SetOpen(); } }
     public void OpenDoors() { foreach(Door door in GetComponentsInChildren<Door>(true)) { door.Open(); } }
     
     public void CloseDoors() { foreach (Door door in GetComponentsInChildren<Door>(true)) { door.Close(); } }

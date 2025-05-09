@@ -36,6 +36,7 @@ public class Entity : MonoBehaviour
     private float despawn_timer;
     private float despawn_timer_max;
 
+    private float invincible = 0;
     private bool alive;
     private int HP;
 
@@ -69,6 +70,7 @@ public class Entity : MonoBehaviour
         if (alive)
         {
             Move();
+            if (invincible > 0) invincible -= Time.deltaTime;
         } 
         else
         {
@@ -76,6 +78,10 @@ public class Entity : MonoBehaviour
             float despawn_percent = despawn_timer / despawn_timer_max * 4;
             if (despawn_percent > 1) { despawn_percent = 1; }
             transform.localScale = new Vector3 (despawn_percent * default_scale.x, despawn_percent * default_scale.y, despawn_percent * default_scale.z);
+
+            float delta_percent = Time.deltaTime * 2 / despawn_timer_max;
+            transform.rotation *= Quaternion.AngleAxis(delta_percent * 90, new Vector3(-1, 0, 0));
+
             if (despawn_timer < 0)
             {
                 Destroy(gameObject, dieSound.length);
@@ -113,13 +119,21 @@ public class Entity : MonoBehaviour
 
     public void Teleport(float x, float y, float z) { Teleport(new Vector3(x, y, z)); }
 
+    public void AddImpulse(Vector3 impulse) { body.velocity += impulse; }
+
     // ************ DAMAGE 
+
+    public void SetInvincible(float timer) { invincible = timer; }
+
+    public bool IsInvincible() { return invincible > 0; }
     public void Damage(int damage)
     {
+        if (invincible > 0) return;
         if (damageSound != null && audioSource != null)
         {
             audioSource.PlayOneShot(damageSound);
         }
+
         HP -= damage;
         if (HP <= 0)
         {

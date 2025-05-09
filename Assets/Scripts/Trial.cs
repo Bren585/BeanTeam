@@ -80,7 +80,6 @@ public class Trial : MonoBehaviour
                     status = state.Finished;
                     GetComponentInParent<Stage>().OpenDoors();
                     if (prize) prize.gameObject.SetActive(true);
-                    Debug.Log("Prize Spawned");
                     goto case state.Finished;
                 }
                 status = state.WaveStart;
@@ -109,7 +108,6 @@ public class Trial : MonoBehaviour
                 break;
         }
         if (prize) prize.gameObject.SetActive(false);
-        Debug.Log("Prize Loaded : " + (bool)prize);
     } 
     public void Enable() { status = state.Idle; }
     public void Disable() { status = state.Finished; }

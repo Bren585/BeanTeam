@@ -64,7 +64,10 @@ public class Enemy : Entity
     private void OnCollisionEnter(Collision collision)
     {
         Player p = collision.gameObject.GetComponent<Player>();
-        if (p != null) { p.Damage(1); }
+        if (p != null) { 
+            p.Damage(1); 
+            if (p.IsInvincible()) Damage(1);
+        }
     }
 
     override protected void OnDeath() {
