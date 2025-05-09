@@ -13,12 +13,12 @@ public enum DiscType
 
     Count
 }
+
 public class Player : Entity
 {
     //private List<Disc> discs = new List<Disc>();
     private Disc[] discs;
     private int equippedDisc = 0;
-
 
     protected override void Start()
     {  
@@ -74,7 +74,6 @@ public class Player : Entity
                     discs[equippedDisc].PassiveEnter();
                 }
 
-                discs[equippedDisc].Skill();
                 Debug.Log("Cキー：1⇄2 切り替え -> Slot " + equippedDisc);
             }
             else if (discs[1] != null ^ discs[2] != null) // どちらか1つだけある
@@ -92,7 +91,6 @@ public class Player : Entity
                     equippedDisc = 0;
                 }
 
-                discs[equippedDisc].Skill();
                 Debug.Log("Cキー：0⇄" + other + " 切り替え -> Slot " + equippedDisc);
             }
             else
@@ -100,6 +98,10 @@ public class Player : Entity
                 Debug.Log("Cキー：切り替えできるディスクがない");
             }
         }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            discs[equippedDisc].Skill();
+        } 
 
 
     }
@@ -128,6 +130,27 @@ public class Player : Entity
         T foundDisc = Object.FindFirstObjectByType<T>();
         if (foundDisc != null)
             AddDisc(foundDisc);
+    }
+
+    public void AddDiscType(DiscType type)
+    {
+        switch (type)
+        {
+            case DiscType.Red:
+                TryAddDisc<Disc_Red>();
+                break;
+            case DiscType.Green:
+                TryAddDisc<Disc_Green>();
+                break;
+            case DiscType.Blue:
+                TryAddDisc<Disc_Blue>();
+                break;
+            case DiscType.Yellow:
+                TryAddDisc<Disc_Yellow>();
+                break;
+            default:
+                break;
+        }
     }
 
 }

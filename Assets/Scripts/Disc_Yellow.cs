@@ -12,6 +12,9 @@ public class Disc_Yellow : Disc
 
     public override void Skill()
     {
+        Player player = FindFirstObjectByType<Player>();
+        player.AddImpulse(player.transform.forward * player.Acceleration * Time.deltaTime * 200);
+        player.SetInvincible(1.0f);
         Debug.Log("â©êFÉXÉLÉã");
     }
 
