@@ -42,6 +42,5 @@ public class Door : MonoBehaviour
     {
         open = true;
         pos.y = -0.51f;
-        Debug.Log("open");
     }
 }

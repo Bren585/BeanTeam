@@ -26,7 +26,7 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        var e = collision.gameObject.GetComponent<Enemy>();
+        var e = collision.gameObject.GetComponent<Entity>();
         if (e != null)
         {
             e.Damage(damageAmount);
