@@ -128,7 +128,7 @@ public class Entity : MonoBehaviour
     public bool IsInvincible() { return invincible > 0; }
     public void Damage(int damage)
     {
-        if (invincible > 0) return;
+        if (invincible > 0 || damage > -1) return;
         if (damageSound != null && audioSource != null)
         {
             audioSource.PlayOneShot(damageSound);
@@ -140,6 +140,14 @@ public class Entity : MonoBehaviour
             HP = 0;
             Die();
         }
+    }
+
+    public void Heal(int heal)
+    {
+        if (heal <= 0 || HP >= max_HP) { return; }
+
+        HP += heal;
+        if (HP > max_HP) { HP = max_HP; }
     }
 
     protected virtual void OnDeath() { }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Disc_Red : Disc
 {
@@ -33,7 +34,19 @@ public class Disc_Red : Disc
     {
         if (player == null) return;
 
-        Debug.Log("Red Skill : " + boostedSpeed);
+        Vector3 position = player.transform.position;
+
+        const float step = Mathf.PI / 8;
+        for (float angle = 0; angle < Mathf.PI; angle += step)
+        {
+            float x = Mathf.Cos(angle);
+            float y = Mathf.Sin(angle);
+
+            Shoot(position, new Vector3(x, 0, y));
+            Shoot(position, new Vector3(-x, 0, -y));
+        }
+
+        Debug.Log("Red Skill");
      
     }
     public override void PassiveEnter()
