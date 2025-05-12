@@ -157,6 +157,7 @@ public class Entity : MonoBehaviour
     {
         if (dieSound != null && audioSource != null)
         {
+            audioSource.volume = 0.5f;
             audioSource.PlayOneShot(dieSound);
         }
 
