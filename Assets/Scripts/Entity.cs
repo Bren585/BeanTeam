@@ -59,6 +59,7 @@ public class Entity : MonoBehaviour
         despawn_timer_max = despawn_timer;
         default_scale = transform.localScale;
         audioSource = GetComponent<AudioSource>();
+
     }
 
     // ************ UPDATE 
@@ -157,10 +158,26 @@ public class Entity : MonoBehaviour
         {
             audioSource.PlayOneShot(dieSound);
         }
+
         alive = false;
         OnDeath();
-       
+
+
+        if (this.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            FindFirstObjectByType<GameBGMManager>().PlayDeathBGM();
+            var gameOverUI = FindFirstObjectByType<GameOverUIController>();
+            if (gameOverUI != null)
+            {
+                gameOverUI.ShowGameOver();
+            }
+        }
+
+      
+
     }
+
     public bool IsAlive() { return alive; }
+
 
 }
