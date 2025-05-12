@@ -44,8 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14fb4f42a6834424899420bcae06073d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 6477248635665421043, guid: 63a0b61642976604eb061c8d45cb553b, type: 3}
+  prefab: {fileID: 5089131208340078022, guid: f56278c2e8f81484f842d5f18aac7f54, type: 3}
   bulletSpeed: 20
   bulletDamage: 10
-  burstInterval: 0.1
-  burstCount: 3
+  shootSound: {fileID: 0}
+  orbitBulletPrefab: {fileID: 5089131208340078022, guid: f56278c2e8f81484f842d5f18aac7f54, type: 3}
+  bulletCount: 8
+  orbitRadius: 3.5
+  rotationSpeed: 100

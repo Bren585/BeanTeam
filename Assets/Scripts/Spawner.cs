@@ -5,8 +5,8 @@ using static UnityEditor.PlayerSettings;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject enemy_prefab;
+    [SerializeField] private GameObject enemy_prefab;
+    [SerializeField] private float spawn_height = 0.2f;
 
     private float   timer;
     private bool    active;
@@ -30,7 +30,7 @@ public class Spawner : MonoBehaviour
 
     public void Init(EnemyData data, float timer = 1.0f)
     {
-        transform.position += new Vector3(UnityEngine.Random.Range(1.0f, -1.0f), 0.2f, UnityEngine.Random.Range(1.0f, -1.0f));  
+        transform.position += new Vector3(UnityEngine.Random.Range(1.0f, -1.0f), spawn_height, UnityEngine.Random.Range(1.0f, -1.0f));  
 
         enemy = Instantiate(
             enemy_prefab, 

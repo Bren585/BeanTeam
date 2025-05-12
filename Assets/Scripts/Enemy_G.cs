@@ -39,32 +39,53 @@ public class Enemy_G : Enemy
                 animation_state = Animation.Idle;
                 state = State.Idle;
                 goto case State.Idle;
+
             case State.Idle:
                 state = State.Chase_Enter;
                 break;
+
             case State.Chase_Enter:
                 animation_state = Animation.Walk;
                 state = State.Chase;
                 goto case State.Chase;
+
             case State.Chase:
                 base.Move();
+
+                Vector3 from    = transform.position;
+                Vector3 to      = player.gameObject.transform.position;
+                from.y          = 0f;
+                to.y            = 0f;
+
+                Vector3 dist = to - from;
+                float angle = Vector3.SignedAngle(transform.forward, dist, Vector3.up);
+                Debug.Log(angle);
+
                 if (
-                    (player.gameObject.transform.position - transform.position).magnitude < attack_trigger_range
-                    && Mathf.Abs(Mathf.Acos(Vector3.Dot(player.transform.position, transform.forward))) < 0.1f
+                    dist.magnitude < attack_trigger_range
+                    && angle < 0.1f
                     && timer <= 0.0f 
                     ) { state = State.Attack_Enter; }
                 break;
+
             case State.Attack_Enter:
                 animation_state = Animation.Attack;
-                timer = cooldown;
                 state = State.Attack;
+                timer = cooldown;
+                Debug.Log("Attack");
                 break;
+
             case State.Attack:
                 if (timer > 0.0f) break;
-                emitter.Shoot(transform.position, transform.forward);
+                Vector3 shoot_pos = transform.position;
+                shoot_pos.y = 1.0f;
+                emitter.Shoot(shoot_pos, transform.forward);
                 state = State.Attack_End;
                 break;
+
             case State.Attack_End:
+                Debug.Log("Attack_End");
+                timer = cooldown;
                 if (animator.GetCurrentAnimatorStateInfo(0).IsName("aruki")) { state = State.Chase_Enter; }
                 break;
         }

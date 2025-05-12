@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using UnityEditor.Build.Content;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
@@ -203,12 +204,17 @@ public class Stage : MonoBehaviour
     private Player player;
 
     private LoadingZone[] loadingZones;
-    private Material material;
     private Trial trial;
 
     private Vector2Int coords;
     private Dictionary<Vector2Int, StageData> stages;
     private int stages_cleared;
+
+    [SerializeField] Material StageRed;
+    [SerializeField] Material StageGreen;
+    [SerializeField] Material StageBlue;
+    [SerializeField] Material StageYellow;
+    [SerializeField] Material StageMixed;
 
     void Start()
     {
@@ -216,7 +222,6 @@ public class Stage : MonoBehaviour
         //foreach(LoadingZone LZ in loadingZones) { LZ.SetParent(this); }
         trial = GetComponentInChildren<Trial>();
 
-        material = GetComponent<Renderer>().material;
         player = FindFirstObjectByType<Player>();
 
         stages = new Dictionary<Vector2Int, StageData>();
@@ -232,24 +237,47 @@ public class Stage : MonoBehaviour
     // Update is called once per frame
     void Update() {}
 
+    private void SetMaterial(Material mat)
+    {
+        //int count = 0;
+        //Debug.Log(mat.name);
+        GameObject[] objs =  GameObject.FindGameObjectsWithTag("MaterialHolder");
+        if (objs == null) return;
+        foreach (GameObject obj in objs)
+        {
+            Renderer r = obj.GetComponent<Renderer>();
+            if (r != null)
+            {
+                r.material = mat;
+                //count++;
+            }
+        }
+        //Debug.Log("Updated " + count + " mats");
+    }
+
     public void SetStage(StageData stage, Direction entrance)
     {
         switch (stage.type) 
         {
             case StageType.Red:
-                material.color = new Color(1, 0, 0, 1);
+                SetMaterial(StageRed);
+                //Debug.Log("Red Stage");
                 break;
             case StageType.Green:
-                material.color = new Color(0, 1, 0, 1);
+                SetMaterial(StageGreen);
+                //Debug.Log("Green Stage");
                 break;
             case StageType.Blue:
-                material.color = new Color(0, 0, 1, 1);
+                SetMaterial(StageBlue);
+                //Debug.Log("Blue Stage");
                 break;
             case StageType.Yellow:
-                material.color = new Color(1, 1, 0, 1);
+                SetMaterial(StageYellow);
+                //Debug.Log("Yellow Stage");
                 break;
             default:
-                material.color = new Color(1, 1, 1, 1);
+                SetMaterial(StageMixed);
+                //Debug.Log("Mixed Stage");
                 break;
         }
 
