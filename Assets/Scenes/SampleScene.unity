@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 54579648}
   - component: {fileID: 54579647}
   - component: {fileID: 54579646}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Door_West
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -330,7 +330,7 @@ GameObject:
   - component: {fileID: 197406536}
   - component: {fileID: 197406540}
   - component: {fileID: 197406539}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Trial_Trigger_PH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -452,7 +452,7 @@ GameObject:
   - component: {fileID: 203280819}
   - component: {fileID: 203280818}
   - component: {fileID: 203280817}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Loading_Zone_Wall_South
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -706,7 +706,7 @@ GameObject:
   - component: {fileID: 273933132}
   - component: {fileID: 273933131}
   - component: {fileID: 273933130}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Loading_Zone_PH_South
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -820,141 +820,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7538475171704889520, guid: 1d7fa2f65bc0bf040a9bb78c43513dc9, type: 3}
   m_PrefabInstance: {fileID: 815695238}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &414464080
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: faadcccdc2eac9a43b1655f1c38de69c, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: faadcccdc2eac9a43b1655f1c38de69c, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: faadcccdc2eac9a43b1655f1c38de69c, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: faadcccdc2eac9a43b1655f1c38de69c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -9.954716
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: faadcccdc2eac9a43b1655f1c38de69c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.11
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: faadcccdc2eac9a43b1655f1c38de69c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -2.2691631
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: faadcccdc2eac9a43b1655f1c38de69c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: faadcccdc2eac9a43b1655f1c38de69c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: faadcccdc2eac9a43b1655f1c38de69c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: faadcccdc2eac9a43b1655f1c38de69c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: faadcccdc2eac9a43b1655f1c38de69c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: faadcccdc2eac9a43b1655f1c38de69c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: faadcccdc2eac9a43b1655f1c38de69c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: faadcccdc2eac9a43b1655f1c38de69c, type: 3}
-      propertyPath: m_Name
-      value: pikmin (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: faadcccdc2eac9a43b1655f1c38de69c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7973368097696455800, guid: faadcccdc2eac9a43b1655f1c38de69c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.08996356
-      objectReference: {fileID: 0}
-    - target: {fileID: 7973368097696455800, guid: faadcccdc2eac9a43b1655f1c38de69c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.000000007450581
-      objectReference: {fileID: 0}
-    - target: {fileID: 7973368097696455800, guid: faadcccdc2eac9a43b1655f1c38de69c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.021652825
-      objectReference: {fileID: 0}
-    - target: {fileID: 7973368097696455800, guid: faadcccdc2eac9a43b1655f1c38de69c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9684208
-      objectReference: {fileID: 0}
-    - target: {fileID: 7973368097696455800, guid: faadcccdc2eac9a43b1655f1c38de69c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.000000024214383
-      objectReference: {fileID: 0}
-    - target: {fileID: 7973368097696455800, guid: faadcccdc2eac9a43b1655f1c38de69c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.24932124
-      objectReference: {fileID: 0}
-    - target: {fileID: 7973368097696455800, guid: faadcccdc2eac9a43b1655f1c38de69c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.000000009313225
-      objectReference: {fileID: 0}
-    - target: {fileID: 7973368097696455800, guid: faadcccdc2eac9a43b1655f1c38de69c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 28.875
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: faadcccdc2eac9a43b1655f1c38de69c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 420365493}
-  m_SourcePrefab: {fileID: 100100000, guid: faadcccdc2eac9a43b1655f1c38de69c, type: 3}
---- !u!1 &420365492 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: faadcccdc2eac9a43b1655f1c38de69c, type: 3}
-  m_PrefabInstance: {fileID: 414464080}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &420365493
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 420365492}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7d264fa33800d5245bcc74e899256da0, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &425817085
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1045,7 +910,7 @@ GameObject:
   - component: {fileID: 517889327}
   - component: {fileID: 517889326}
   - component: {fileID: 517889325}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Loading_Zone_PH_West
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1364,7 +1229,7 @@ GameObject:
   - component: {fileID: 712771564}
   - component: {fileID: 712771563}
   - component: {fileID: 712771562}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Loading_Zone_Wall_West
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1459,6 +1324,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 712771560}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+
 --- !u!1001 &754718977
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1548,6 +1414,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f55513ab6c0aff40916328a09abcca3, type: 3}
+
 --- !u!1001 &776788977
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1623,6 +1490,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2b6e39d428383e84483215ba4bb591b2, type: 3}
       propertyPath: m_Name
       value: BaseStage_PH
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2b6e39d428383e84483215ba4bb591b2, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1774,7 +1645,7 @@ GameObject:
   - component: {fileID: 818395931}
   - component: {fileID: 818395930}
   - component: {fileID: 818395929}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Loading_Zone_Wall_North
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1984,7 +1855,7 @@ GameObject:
   - component: {fileID: 873328191}
   - component: {fileID: 873328190}
   - component: {fileID: 873328189}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Loading_Zone_PH_North
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2247,7 +2118,7 @@ GameObject:
   - component: {fileID: 1128298172}
   - component: {fileID: 1128298176}
   - component: {fileID: 1128298175}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Loading_Zone_PH_East
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2369,7 +2240,7 @@ GameObject:
   - component: {fileID: 1135663182}
   - component: {fileID: 1135663181}
   - component: {fileID: 1135663180}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Door_North
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2654,7 +2525,7 @@ GameObject:
   - component: {fileID: 1297669607}
   - component: {fileID: 1297669606}
   - component: {fileID: 1297669605}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Door_South
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2982,7 +2853,7 @@ GameObject:
   - component: {fileID: 1681062842}
   - component: {fileID: 1681062841}
   - component: {fileID: 1681062840}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Door_East
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3224,7 +3095,7 @@ GameObject:
   - component: {fileID: 1811825080}
   - component: {fileID: 1811825079}
   - component: {fileID: 1811825078}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Loading_Zone_Wall_East
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4058,7 +3929,5 @@ SceneRoots:
   - {fileID: 776788977}
   - {fileID: 543887203}
   - {fileID: 1804955068}
-  - {fileID: 414464080}
-  - {fileID: 754718977}
   - {fileID: 1792621781}
   - {fileID: 692915036}

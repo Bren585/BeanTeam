@@ -11,10 +11,12 @@ public class Disc_Blue : Disc
     private List<GameObject> orbitBullets = new List<GameObject>();
     private float currentAngle = 0f;
     private Transform playerTransform;
+    private Player player;
 
     private void Awake()
     {
         // ÉvÉåÉCÉÑÅ[ÇÃTransforméÊìæ
+        player = GetComponent<Player>();
         playerTransform = GetComponentInParent<Player>()?.transform;
         if (playerTransform == null)
         {
@@ -35,6 +37,16 @@ public class Disc_Blue : Disc
             Vector3 offset = new Vector3(Mathf.Cos(rad), 0, Mathf.Sin(rad)) * orbitRadius;
             orbitBullets[i].transform.position = playerTransform.position + offset;
         }
+    }
+
+    public override void Skill()
+    {
+        if (player == null)
+        {
+            return;
+        }
+
+        player.Heal(1);
     }
 
     public override void Shoot(Vector3 position, Vector3 direction)
