@@ -129,7 +129,7 @@ public class Entity : MonoBehaviour
     public bool IsInvincible() { return invincible > 0; }
     public void Damage(int damage)
     {
-        if (invincible > 0 || damage > -1) return;
+        if (invincible > 0 || damage <= 0) return;
         if (damageSound != null && audioSource != null)
         {
             audioSource.PlayOneShot(damageSound);
@@ -156,6 +156,7 @@ public class Entity : MonoBehaviour
     {
         if (dieSound != null && audioSource != null)
         {
+            audioSource.volume = 0.5f;
             audioSource.PlayOneShot(dieSound);
         }
 

@@ -34,6 +34,7 @@ public class Projectile : MonoBehaviour
             // ƒqƒbƒg‰¹‚ğ–Â‚ç‚·
             if (hitSound != null && audioSource != null)
             {
+                audioSource.volume = 0.4f;
                 audioSource.PlayOneShot(hitSound);
                 Destroy(gameObject); // ‰¹‚ªI‚í‚é‚Ü‚Å‘Ò‚Â
                 return;
