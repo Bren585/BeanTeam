@@ -1198,6 +1198,67 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &692915034
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 692915036}
+  - component: {fileID: 692915035}
+  - component: {fileID: 692915037}
+  m_Layer: 5
+  m_Name: UIDocument
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &692915035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692915034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: 0ee84108a1bd73f41911a11d9743b2a1, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: 29b7f0f8a9a56064da8c965a7fbdbee1, type: 3}
+  m_SortingOrder: 0
+--- !u!4 &692915036
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692915034}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &692915037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692915034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f1833eab2bf38e419622245e6a899a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1406,6 +1467,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7815036138178742590, guid: 9f55513ab6c0aff40916328a09abcca3, type: 3}
+      propertyPath: m_Volume
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: -7815036138178742590, guid: 9f55513ab6c0aff40916328a09abcca3, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: b16172d22b64b7d4d87925320dbcc458, type: 3}
+    - target: {fileID: -7815036138178742590, guid: 9f55513ab6c0aff40916328a09abcca3, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b16172d22b64b7d4d87925320dbcc458, type: 3}
+    - target: {fileID: -7815036138178742590, guid: 9f55513ab6c0aff40916328a09abcca3, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4771494667180393520, guid: 9f55513ab6c0aff40916328a09abcca3, type: 3}
       propertyPath: max_HP
       value: 1
@@ -2816,7 +2893,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 1.0804679
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -3044,6 +3121,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgm1: {fileID: 8300000, guid: e92ac1fee5384bb48a0628fd46c07e60, type: 3}
   bgm2: {fileID: 8300000, guid: 8595341f8fcf95242a32d21f89b478b5, type: 3}
+  deathIntroBgm: {fileID: 8300000, guid: 9ca15034328aec24789711ae1b56eae1, type: 3}
+  deathLoopBgm: {fileID: 8300000, guid: 004ba14e94addfc49acda7997c463a5c, type: 3}
   crossFadeDuration: 1
 --- !u!4 &1792621781
 Transform:
@@ -3982,3 +4061,4 @@ SceneRoots:
   - {fileID: 414464080}
   - {fileID: 754718977}
   - {fileID: 1792621781}
+  - {fileID: 692915036}

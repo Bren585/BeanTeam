@@ -1,0 +1,47 @@
+<UXML xmlns="UnityEngine.UIElements">
+  <VisualElement name="Overlay"
+                 style="position: absolute;
+                        top: 0px;
+                        left: 0px;
+                        right: 0px;
+                        bottom: 0px;
+                        background-color: rgba(0, 0, 0, 0.7);
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        visibility: hidden;">
+
+    <VisualElement name="GameOverRoot"
+                   style="background-color: white;
+                          width: 400px;
+                          height: 300px;
+                          flex-direction: column;
+                          align-items: center;
+                          justify-content: center;
+                          border-radius: 10px;
+                          padding: 20px;
+                          visibility: hidden;">
+
+      <Label name="Title"
+             text="Game Over"
+             style="font-size: 50px;
+                    -unity-text-align: upper-center;
+                    margin-bottom: 20px;" />
+
+      <Button name="Retry"
+              text="Retry"
+              style="width: 200px;
+                     height: 50px;
+                     font-size: 20px;
+                     -unity-text-align: middle-center;
+                     margin-bottom: 10px;" />
+
+      <Button name="Title"
+              text="Title"
+              style="width: 200px;
+                     height: 50px;
+                     font-size: 20px;
+                     -unity-text-align: middle-center;" />
+    </VisualElement>
+  </VisualElement>
+</UXML>
