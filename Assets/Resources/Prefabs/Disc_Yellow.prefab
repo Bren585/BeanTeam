@@ -44,9 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c2abb66bd48a4645bb7f416de19f5cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 6477248635665421043, guid: 63a0b61642976604eb061c8d45cb553b, type: 3}
+  prefab: {fileID: 6477248635665421043, guid: 502999390c51587409fea3ad3983c40a, type: 3}
   bulletSpeed: 20
   bulletDamage: 10
+  shootSound: {fileID: 0}
   numberOfShots: 5
   spreadAngle: 15
   damageMultiplier: 2

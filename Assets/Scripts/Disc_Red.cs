@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 public class Disc_Red : Disc
 {
-    private float boostedSpeed = 400.0f; // ブースト後の速度
+    private float boostedSpeed = 120.0f; // ブースト後の速度
     private float originalSpeed;  // 元の速度
 
     private Player player;
