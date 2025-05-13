@@ -16,7 +16,7 @@ public class Disc_Blue : Disc
     private void Awake()
     {
         // ƒvƒŒƒCƒ„[‚ÌTransformæ“¾
-        player = GetComponent<Player>();
+        player = GetComponentInParent<Player>();
         playerTransform = GetComponentInParent<Player>()?.transform;
         if (playerTransform == null)
         {
@@ -46,6 +46,7 @@ public class Disc_Blue : Disc
             return;
         }
 
+        //Debug.Log("Blue Skill");
         player.Heal(1);
     }
 

@@ -59,7 +59,7 @@ public class Enemy_G : Enemy
 
                 Vector3 dist = to - from;
                 float angle = Vector3.SignedAngle(transform.forward, dist, Vector3.up);
-                Debug.Log(angle);
+                //Debug.Log(angle);
 
                 if (
                     dist.magnitude < attack_trigger_range
@@ -72,7 +72,7 @@ public class Enemy_G : Enemy
                 animation_state = Animation.Attack;
                 state = State.Attack;
                 timer = cooldown;
-                Debug.Log("Attack");
+                //Debug.Log("Attack");
                 break;
 
             case State.Attack:
@@ -84,7 +84,7 @@ public class Enemy_G : Enemy
                 break;
 
             case State.Attack_End:
-                Debug.Log("Attack_End");
+                //Debug.Log("Attack_End");
                 timer = cooldown;
                 if (animator.GetCurrentAnimatorStateInfo(0).IsName("aruki")) { state = State.Chase_Enter; }
                 break;

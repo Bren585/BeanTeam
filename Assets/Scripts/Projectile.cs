@@ -4,8 +4,9 @@ using UnityEngine.Audio;
 public class Projectile : MonoBehaviour
 {
     [SerializeField] private float lifeTime = 3f;
-    [SerializeField] protected int damageAmount = 10;
+    [SerializeField] protected int damageAmount = 1;
     [SerializeField] private float moveSpeed = 20f;
+    [SerializeField] private float knockback = 10.0f;
     [SerializeField] protected AudioClip hitSound;
     protected AudioSource audioSource;
 
@@ -29,7 +30,9 @@ public class Projectile : MonoBehaviour
         var e = collision.gameObject.GetComponent<Entity>();
         if (e != null)
         {
+            if (e.IsInvincible()) return;
             e.Damage(damageAmount);
+            e.AddImpulse(direction * knockback);
 
             // ƒqƒbƒg‰¹‚ð–Â‚ç‚·
             if (hitSound != null && audioSource != null)
@@ -51,6 +54,6 @@ public class Projectile : MonoBehaviour
     {
         direction = dir.normalized;
         moveSpeed = speed;
-        damageAmount = damage;
+        damageAmount = 1;
     }
 }

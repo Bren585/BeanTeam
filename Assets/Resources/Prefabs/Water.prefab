@@ -4922,9 +4922,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89ceb17c637295143a80247bcdfd8e26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 1e+12
-  damageAmount: 10
+  lifeTime: 99999
+  damageAmount: 1
   moveSpeed: 20
+  knockback: 10
   hitSound: {fileID: 8300000, guid: b3f525e15cd7d28408add4ae5e3183f4, type: 3}
 --- !u!114 &-8779375518326282383
 MonoBehaviour:
@@ -4938,7 +4939,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6df569e506238b74ba49321d22591b3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 3
+  lifeTime: 99999
   damageAmount: 10
   moveSpeed: 20
+  knockback: 10
   hitSound: {fileID: 8300000, guid: b3f525e15cd7d28408add4ae5e3183f4, type: 3}

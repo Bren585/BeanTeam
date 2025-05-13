@@ -297,7 +297,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 6477248635665421043, guid: 1a4c010f438eba043a1bc0ae419880cd, type: 3}
   bulletSpeed: 20
-  bulletDamage: 10
+  bulletDamage: 1
 --- !u!114 &6294973872370165807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,7 +317,7 @@ MonoBehaviour:
   damageSound: {fileID: 8300000, guid: b3f525e15cd7d28408add4ae5e3183f4, type: 3}
   dieSound: {fileID: 8300000, guid: b16172d22b64b7d4d87925320dbcc458, type: 3}
   cussetSound: {fileID: 0}
-  despawn_timer: 0
+  despawn_timer: 4
   max_HP: 1
   emitter: {fileID: 0}
   cooldown: 1

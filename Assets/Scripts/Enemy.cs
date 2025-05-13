@@ -66,7 +66,7 @@ public class Enemy : Entity
         Player p = collision.gameObject.GetComponent<Player>();
         if (p != null) { 
             p.Damage(1); 
-            if (p.IsInvincible()) Damage(1);
+            //if (p.IsInvincible()) Damage(1);
         }
     }
 

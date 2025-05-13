@@ -3,7 +3,6 @@ using UnityEngine.Audio;
 
 public class OrbitingShield : Projectile
 {
-
     private void OnCollisionEnter(Collision collision)
     {
         var e = collision.gameObject.GetComponent<Enemy>();

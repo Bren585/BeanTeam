@@ -4922,6 +4922,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 3
-  damageAmount: 10
+  damageAmount: 1
   moveSpeed: 20
+  knockback: 10
   hitSound: {fileID: 8300000, guid: b3f525e15cd7d28408add4ae5e3183f4, type: 3}

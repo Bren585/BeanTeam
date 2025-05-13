@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8970930337720758207, guid: 93743c1723eaa97428cade2270152ecb, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 93743c1723eaa97428cade2270152ecb, type: 3}
       propertyPath: m_LocalScale.x
       value: 10
@@ -60,9 +64,65 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7224727879156520704, guid: 93743c1723eaa97428cade2270152ecb, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -6741840005920520392, guid: 93743c1723eaa97428cade2270152ecb, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -5151492872390713093, guid: 93743c1723eaa97428cade2270152ecb, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -2793356817734533881, guid: 93743c1723eaa97428cade2270152ecb, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -2431519651382674220, guid: 93743c1723eaa97428cade2270152ecb, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -2009435060854776976, guid: 93743c1723eaa97428cade2270152ecb, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 600020664738328708, guid: 93743c1723eaa97428cade2270152ecb, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 93743c1723eaa97428cade2270152ecb, type: 3}
       propertyPath: m_Name
       value: Enemy_R
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 93743c1723eaa97428cade2270152ecb, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2222863975163871662, guid: 93743c1723eaa97428cade2270152ecb, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2275054285332628053, guid: 93743c1723eaa97428cade2270152ecb, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2575224507376551755, guid: 93743c1723eaa97428cade2270152ecb, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4634097704657108745, guid: 93743c1723eaa97428cade2270152ecb, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224950183910343819, guid: 93743c1723eaa97428cade2270152ecb, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8951423486928144252, guid: 93743c1723eaa97428cade2270152ecb, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5055,7 +5115,7 @@ MonoBehaviour:
   damageSound: {fileID: 8300000, guid: b3f525e15cd7d28408add4ae5e3183f4, type: 3}
   dieSound: {fileID: 8300000, guid: b16172d22b64b7d4d87925320dbcc458, type: 3}
   cussetSound: {fileID: 0}
-  despawn_timer: 0
+  despawn_timer: 4
   max_HP: 1
 --- !u!54 &6410877529200042457
 Rigidbody:

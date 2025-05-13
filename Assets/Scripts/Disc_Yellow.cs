@@ -15,7 +15,7 @@ public class Disc_Yellow : Disc
         Player player = FindFirstObjectByType<Player>();
         player.AddImpulse(player.transform.forward * player.Acceleration * Time.deltaTime * 200);
         player.SetInvincible(1.0f);
-        Debug.Log("黄色スキル");
+        //Debug.Log("黄色スキル");
     }
 
     public override void Shoot(Vector3 position, Vector3 direction)

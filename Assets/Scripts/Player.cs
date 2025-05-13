@@ -27,7 +27,6 @@ public class Player : Entity
         discs[0] = GetComponentInChildren<Disc_Purple>();
         equippedDisc = 0;
     }
-
     protected override void Move()
     {
         Vector3 input;
@@ -60,59 +59,58 @@ public class Player : Entity
         if (Input.GetKeyDown(KeyCode.C))
         {
             
-            if (discs[1] != null && discs[2] != null)
+            if (discs[2] != null)
             {
+                Debug.Log("Cキー：1⇄2 切り替え -> Slot " + equippedDisc);
                 if (cussetSound != null && audioSource != null)
                 {
                     audioSource.PlayOneShot(cussetSound);
                 }
                 // 通常の 1⇄2 切り替え
-                if (equippedDisc != 1 && equippedDisc != 2)
-                {
-                    equippedDisc = 1;
-                    discs[equippedDisc].PassiveEnter();
-                }
-                else
-                {
-                    discs[equippedDisc].PassiveExit();
-                    equippedDisc = (equippedDisc == 1) ? 2 : 1;
-                    discs[equippedDisc].PassiveEnter();
-                }
+                discs[equippedDisc].PassiveExit();
+                equippedDisc = (equippedDisc == 2) ? 1 : 2;
+                discs[equippedDisc].PassiveEnter();
 
-                Debug.Log("Cキー：1⇄2 切り替え -> Slot " + equippedDisc);
             }
-            else if (discs[1] != null ^ discs[2] != null) // どちらか1つだけある
+            else if (discs[1] != null)
             {
+                Debug.Log("Cキー：0⇄1 切り替え -> Slot " + equippedDisc);
                 if (cussetSound != null && audioSource != null)
                 {
                     audioSource.PlayOneShot(cussetSound);
                 }
-                int other = (discs[1] != null) ? 1 : 2;
 
-                if (equippedDisc == 0)
-                {
-                    equippedDisc = other;
-                    discs[equippedDisc].PassiveEnter();
-                }
-                else if (equippedDisc == other)
-                {
-                    discs[equippedDisc].PassiveExit();
-                    equippedDisc = 0;
-                }
+                discs[equippedDisc].PassiveExit();
+                equippedDisc = (equippedDisc == 1) ? 0 : 1;
+                discs[equippedDisc].PassiveEnter();
 
-                Debug.Log("Cキー：0⇄" + other + " 切り替え -> Slot " + equippedDisc);
             }
             else
             {
                 Debug.Log("Cキー：切り替えできるディスクがない");
+                equippedDisc = 0;
             }
+            Debug.Log("Now Using Slot " + equippedDisc);
         }
+
         if (Input.GetKeyDown(KeyCode.X))
         {
             discs[equippedDisc].Skill();
-        } 
+        }
+    }
 
-
+    private void OnDestroy()
+    {
+        FindFirstObjectByType<GameBGMManager>().PlayDeathBGM();
+        var gameOverUI = FindFirstObjectByType<GameOverUIController>();
+        if (gameOverUI != null)
+        {
+            gameOverUI.ShowGameOver();
+        }
+    }
+    protected override void OnDeath()
+    {
+        GetComponent<ParticleSystem>().Play();
     }
     public void AddDisc(Disc newDisc)
     {
@@ -121,21 +119,81 @@ public class Player : Entity
 
         if (slot == -1)
         {
-            // discs[1]を削除し、discs[2]を左にスライド
-            discs[1].PassiveExit();
-            Destroy(discs[1].gameObject);
-            discs[1] = discs[2];
-            discs[2] = null;
+            // 使ってないディスクを新しいディスクに入れ替え
+            int unquippedSlot = (equippedDisc) == 1 ? 2 : 1;
+
+            Unequip(unquippedSlot);
             slot = 2;
         }
 
         discs[slot] = newDisc;
+        discs[equippedDisc].PassiveExit();
         equippedDisc = slot;
         newDisc.PassiveEnter();
+        Debug.Log("Added new disc to slot " + slot);
+    }
+    public void Unequip(int slot)
+    {
+        if (slot < 1 || slot > 2) return;
+        Debug.Log("Unequipping Slot " + slot);
+
+        if (equippedDisc == slot) {
+            discs[slot].PassiveExit();
+            Debug.Log("Changing active slot (" + equippedDisc + ")");
+            if (slot == 1)
+            {
+                if (discs[2] != null)
+                {
+                    Debug.Log("Moving disc in slot 2");
+                    discs[1] = discs[2];
+                    discs[2] = null;
+                    equippedDisc = 1;
+                    Debug.Log("Disc moved " + ((discs[1] == null) ? "unsucessfully" : "sucessfully"));
+                }
+                else
+                {
+                    Debug.Log("No disc in slot 2");
+                    discs[1] = null;
+                    equippedDisc = 0;
+                }
+            }
+            else
+            {
+                Debug.Log("Deleting Slot 2");
+                discs[2] = null;
+                equippedDisc = 1;
+            }
+        } 
+        else 
+        {
+            Debug.Log("Deleting inactive slot");
+            discs[slot] = null;
+
+            if (slot == 1 && equippedDisc == 2)
+            {
+                Debug.Log("Moving disc in slot 2");
+                discs[1] = discs[2];
+                discs[2] = null;
+                equippedDisc = 1;
+                Debug.Log("Disc moved " + ((discs[1] == null) ? "unsucessfully" : "sucessfully"));
+            }
+        }
+
+        Debug.Log("Unequipped Slot " + slot);
+    }
+
+    public int IsEquipped<T>() where T : Disc
+    {
+        if (discs[1] == null) return 0;
+        if (discs[1].gameObject.GetComponent<T>() != null) { return 1; }
+        if (discs[2] == null) return 0;
+        if (discs[2].gameObject.GetComponent<T>() != null) { return 2; }
+        return 0;
     }
 
     private void TryAddDisc<T>() where T : Disc
     {
+        if (IsEquipped<T>() != 0) return;
         T foundDisc = Object.FindFirstObjectByType<T>();
         if (foundDisc != null)
             AddDisc(foundDisc);

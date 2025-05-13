@@ -9,19 +9,19 @@ public class Disc_Purple : Disc
 
     public override void PassiveEnter()
     {
-        Debug.Log("紫パッシブ");
+        //Debug.Log("紫パッシブ");
         // パッシブ効果があればここに
     }
 
     public override void PassiveExit()
     {
-        Debug.Log("紫パッシブ終わり");
+        //Debug.Log("紫パッシブ終わり");
         // パッシブ終了処理
     }
 
     public override void Skill()
     {
-        Debug.Log("紫ディスクスキル");
+        //Debug.Log("紫ディスクスキル");
 
         // スキルがあれば後で追加
     }
