@@ -186,7 +186,7 @@ MonoBehaviour:
   cussetSound: {fileID: 0}
   despawn_timer: 4
   max_HP: 1
-  attack_trigger_range: 10
+  attack_trigger_range: 4
 --- !u!54 &851743696230802007
 Rigidbody:
   m_ObjectHideFlags: 0

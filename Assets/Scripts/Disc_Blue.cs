@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Disc_Blue : Disc
 {
-    public GameObject orbitBulletPrefab;
+    [SerializeField] private GameObject orbitBulletPrefab;
     [SerializeField] private int bulletCount = 8;
     [SerializeField] private float orbitRadius = 3.5f;
     [SerializeField] private float rotationSpeed = 100f;
@@ -16,7 +16,7 @@ public class Disc_Blue : Disc
     private void Awake()
     {
         // ÉvÉåÉCÉÑÅ[ÇÃTransforméÊìæ
-        player = GetComponent<Player>();
+        player = GetComponentInParent<Player>();
         playerTransform = GetComponentInParent<Player>()?.transform;
         if (playerTransform == null)
         {
@@ -46,6 +46,7 @@ public class Disc_Blue : Disc
             return;
         }
 
+        //Debug.Log("Blue Skill");
         player.Heal(1);
     }
 

@@ -5,7 +5,7 @@ public class Emitter : MonoBehaviour
     [SerializeField] private GameObject prefab;
     [SerializeField] protected float bulletSpeed = 20f;
 
-    [SerializeField] protected int bulletDamage = 10; 
+    [SerializeField] protected int bulletDamage = 1; 
 
     public virtual void Shoot(Vector3 position, Vector3 direction)
     {
@@ -14,7 +14,7 @@ public class Emitter : MonoBehaviour
         Projectile projectile = bullet.GetComponent<Projectile>();
         if (projectile != null)
         {
-            projectile.Initialize(direction, bulletSpeed, bulletDamage);
+            projectile.Initialize(direction, bulletSpeed, 1);
         }
     }
 }

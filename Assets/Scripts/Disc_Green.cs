@@ -21,13 +21,13 @@ public class Disc_Green : Disc
 
     public override void PassiveEnter()
     {
-        Debug.Log("緑パッシブ");
+        //Debug.Log("緑パッシブ");
         // ここにプレイヤーへの効果があれば追加
     }
 
     public override void PassiveExit()
     {
-        Debug.Log("緑パッシブ終わり");
+        //Debug.Log("緑パッシブ終わり");
         // Passiveの終了処理があれば追加
     }
 
@@ -39,7 +39,7 @@ public class Disc_Green : Disc
             enemy.AddImpulse(player.transform.forward * player.Acceleration * Time.deltaTime * 100);
         }
 
-        Debug.Log("緑ディスクスキル");
+        //Debug.Log("緑ディスクスキル");
         // スキル処理を後で追加する場合
     }
 }

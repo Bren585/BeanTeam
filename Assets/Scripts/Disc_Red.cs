@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 public class Disc_Red : Disc
 {
-    private float boostedSpeed = 400.0f; // ブースト後の速度
+    private float boostedSpeed = 120.0f; // ブースト後の速度
     private float originalSpeed;  // 元の速度
 
     private Player player;
@@ -46,7 +46,7 @@ public class Disc_Red : Disc
             Shoot(position, new Vector3(-x, 0, -y));
         }
 
-        Debug.Log("Red Skill");
+        //Debug.Log("Red Skill");
      
     }
     public override void PassiveEnter()
@@ -55,7 +55,7 @@ public class Disc_Red : Disc
 
         player.Acceleration = boostedSpeed;  // プレイヤーの加速度を変更
         //isBoosted = true;  // 状態を「ブースト中」に設定
-        Debug.Log("赤ブースト");
+        //Debug.Log("赤ブースト");
     }
 
     public override void PassiveExit()
@@ -64,6 +64,6 @@ public class Disc_Red : Disc
 
         player.Acceleration = originalSpeed;  // オリジナルの速度に戻す
         //isBoosted = false;  // 状態を「通常」に設定
-        Debug.Log("赤ブースと終了");
+        //Debug.Log("赤ブースと終了");
     }
 }

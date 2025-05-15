@@ -6,9 +6,11 @@ using UnityEngine;
 
 public class Trial : MonoBehaviour
 {
-    [SerializeField] private GameObject enemy_prefab;
+    //[SerializeField] private GameObject enemy_prefab;
 
-    [SerializeField] private GameObject spawner_prefab;
+    //[SerializeField] private GameObject spawner_prefab;
+
+    [SerializeField] private GameObject[] spawners;
 
     [SerializeField] private Vector2 range;
 
@@ -45,6 +47,7 @@ public class Trial : MonoBehaviour
                 wave = 0;
                 return;
             case state.WaveStart:
+                //Debug.Log("WaveBegins");
                 GetComponentInParent<Stage>().CloseDoors();
 
                 //Debug.Log("Wave " + wave + " starting");
@@ -56,7 +59,7 @@ public class Trial : MonoBehaviour
                     pos.z *= range.y;
 
                     Instantiate(
-                        spawner_prefab, 
+                        spawners[(int)TrialData[wave][enemy].type], 
                         pos, 
                         Quaternion.LookRotation(FindFirstObjectByType<Player>().transform.position)
                     ).GetComponent<Spawner>().Init(TrialData[wave][enemy], 1.0f);
@@ -94,7 +97,8 @@ public class Trial : MonoBehaviour
     {
         if (status == state.Idle)
         {
-            status = state.WaveStart;
+            if (TrialData == null) status = state.Finished;
+            else status = state.WaveStart;
         }
     }
 

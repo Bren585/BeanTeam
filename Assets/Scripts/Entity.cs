@@ -68,6 +68,7 @@ public class Entity : MonoBehaviour
 
     void Update()
     {
+        if (FindFirstObjectByType<Player>() == null) return;
         if (alive)
         {
             Move();
@@ -83,9 +84,9 @@ public class Entity : MonoBehaviour
             float delta_percent = Time.deltaTime * 2 / despawn_timer_max;
             transform.rotation *= Quaternion.AngleAxis(delta_percent * 90, new Vector3(-1, 0, 0));
 
-            if (despawn_timer < 0.0f)
+            if (despawn_timer < 0.1f)
             {
-                Destroy(gameObject,0.1f);
+                Destroy(gameObject, 0.1f);
             }
         }
         Animate();
@@ -124,11 +125,13 @@ public class Entity : MonoBehaviour
 
     // ************ DAMAGE 
 
+    public int GetMaxHp() { return max_HP; }
+    public int GetHp() { return HP; }
     public void SetInvincible(float timer) { invincible = timer; }
-
     public bool IsInvincible() { return invincible > 0; }
     public void Damage(int damage)
     {
+        //Debug.Log("Ow | " + damage);
         if (invincible > 0 || damage <= 0) return;
         if (damageSound != null && audioSource != null)
         {
@@ -141,6 +144,8 @@ public class Entity : MonoBehaviour
             HP = 0;
             Die();
         }
+
+        SetInvincible(0.5f);
     }
 
     public void Heal(int heal)
@@ -162,20 +167,6 @@ public class Entity : MonoBehaviour
 
         alive = false;
         OnDeath();
-
-
-        if (this.gameObject.layer == LayerMask.NameToLayer("Player"))
-        {
-            FindFirstObjectByType<GameBGMManager>().PlayDeathBGM();
-            var gameOverUI = FindFirstObjectByType<GameOverUIController>();
-            if (gameOverUI != null)
-            {
-                gameOverUI.ShowGameOver();
-            }
-        }
-
-      
-
     }
 
     public bool IsAlive() { return alive; }

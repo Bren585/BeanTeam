@@ -8,8 +8,8 @@ public class Door : MonoBehaviour
 
     private bool open;
     private Vector3 pos;
-    private float open_y = -5.1f;
-    private float close_y = 1.5f;
+    [SerializeField] private float open_y = -5.1f;
+    [SerializeField] private float close_y = 1.5f;
 
     private void Start()
     {
