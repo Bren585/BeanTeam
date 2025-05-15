@@ -16,6 +16,8 @@ public class Disc_Yellow : Disc
         player.AddImpulse(player.transform.forward * player.Acceleration * Time.deltaTime * 200);
         player.SetInvincible(1.0f);
         //Debug.Log("â©êFÉXÉLÉã");
+        player.Unequip(player.IsEquipped<Disc_Yellow>());
+        player.UpdateDiscVisuals();
     }
 
     public override void Shoot(Vector3 position, Vector3 direction)

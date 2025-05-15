@@ -46,8 +46,13 @@ public class Disc_Blue : Disc
             return;
         }
 
+        if (player.GetHp() == player.GetMaxHp()) return;
+
         //Debug.Log("Blue Skill");
         player.Heal(1);
+
+        player.Unequip(player.IsEquipped<Disc_Blue>());
+        player.UpdateDiscVisuals();
     }
 
     public override void Shoot(Vector3 position, Vector3 direction)
