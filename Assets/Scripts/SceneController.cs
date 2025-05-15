@@ -5,6 +5,7 @@ public class SceneController : MonoBehaviour
 {
     static public string gameSceneName = "SampleScene";
     static public string titleSceneName = "TitleScene";
+    static public string tutorialSceneName = "TutorialScene";
 
     void Update()
     {
@@ -36,6 +37,19 @@ public class SceneController : MonoBehaviour
 
                 SceneManager.LoadScene(titleSceneName);
             }
+        }
+        else if (SceneManager.GetActiveScene().name == tutorialSceneName)
+        {
+           
+                // タイトルに戻る前にBGMオブジェクトを破棄
+                TitleBGMManager existingBGM = FindFirstObjectByType<TitleBGMManager>();
+                if (existingBGM != null)
+                {
+                    Destroy(existingBGM.gameObject);
+                }
+
+                SceneManager.LoadScene(titleSceneName);
+            
         }
     }
 }

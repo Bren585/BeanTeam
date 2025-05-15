@@ -11,7 +11,7 @@ public class TitleMenu : MonoBehaviour
     {
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
         root.Q<Button>("Start").clicked += OnStartClicked;
-
+        root.Q<Button>("Tutorial").clicked += OnTutorialClicked;
         bgmManager = FindFirstObjectByType<TitleBGMManager>(); // BGMマネージャーを取得
     }
 
@@ -21,10 +21,24 @@ public class TitleMenu : MonoBehaviour
         {
             bgmManager.FadeOutAndLoadScene(SceneController.gameSceneName); // フェードアウトしてからゲームシーンへ
         }
+
         else
         {
             Debug.LogWarning("TitleBGMManager が見つかりません。通常のシーン遷移を行います。");
             SceneManager.LoadScene(SceneController.gameSceneName); // フォールバック
+        }
+    }
+
+    void OnTutorialClicked()
+    {
+        string TutorialSceneName = "TutorialScene"; 
+        if (bgmManager != null)
+        {
+            bgmManager.FadeOutAndLoadScene(TutorialSceneName);
+        }
+        else
+        {
+            SceneManager.LoadScene(TutorialSceneName);
         }
     }
 }
