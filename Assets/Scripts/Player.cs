@@ -1,6 +1,7 @@
 
 using System.Collections.Generic;
 using System.ComponentModel;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public enum DiscType
@@ -59,15 +60,15 @@ public class Player : Entity
                 discs[equippedDisc].Shoot(pos, dir);
             }
         }
-        //if (Input.GetKeyDown(KeyCode.R)) TryAddDisc<Disc_Red>();
-        //if (Input.GetKeyDown(KeyCode.B)) TryAddDisc<Disc_Blue>();
-        //if (Input.GetKeyDown(KeyCode.G)) TryAddDisc<Disc_Green>();
-        //if (Input.GetKeyDown(KeyCode.Y)) TryAddDisc<Disc_Yellow>();
-        //if (Input.GetKeyDown(KeyCode.P)) TryAddDisc<Disc_Purple>();
-        if (animator != null)
+        if (Input.GetKeyDown(KeyCode.R)) TryAddDisc<Disc_Red>();
+        if (Input.GetKeyDown(KeyCode.B)) TryAddDisc<Disc_Blue>();
+        if (Input.GetKeyDown(KeyCode.G)) TryAddDisc<Disc_Green>();
+        if (Input.GetKeyDown(KeyCode.Y)) TryAddDisc<Disc_Yellow>();
+        if (Input.GetKeyDown(KeyCode.P)) TryAddDisc<Disc_Purple>();
+        if (panimator != null)
         {
             bool isWalking = input.magnitude > 0.1f;
-            animator.SetBool("isWalking", isWalking);
+            panimator.SetBool("isWalking", isWalking);
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
@@ -124,12 +125,17 @@ public class Player : Entity
     {
         var bgm = FindFirstObjectByType<GameBGMManager>();
         if (bgm != null) bgm.PlayDeathBGM();
+
         var gameOverUI = FindFirstObjectByType<GameOverUIController>();
-        if (gameOverUI != null)
+        var stage = FindFirstObjectByType<Stage>(); // Stageコンポーネントを探す
+
+        if (gameOverUI != null && stage != null)
         {
+            gameOverUI.SetClearCount(stage.getClearCount()); // stages_clearedではなくgetterを使う
             gameOverUI.ShowGameOver();
         }
     }
+
     protected override void OnDeath()
     {
         GetComponent<ParticleSystem>().Play();

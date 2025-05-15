@@ -11,13 +11,10 @@ public class SceneController : MonoBehaviour
 
     void Update()
     {
-        if (Input.anyKey)
+      
+        if (SceneManager.GetActiveScene().name == tutorialSceneName)
         {
-            SceneManager.LoadScene(titleSceneName);
-        }
-        else if (SceneManager.GetActiveScene().name == tutorialSceneName)
-        {
-            if (Input.anyKey)
+            if (Input.GetKeyDown(KeyCode.Return))
             {
                 // タイトルに戻る前にBGMオブジェクトを破棄
                 TitleBGMManager existingBGM = FindFirstObjectByType<TitleBGMManager>();

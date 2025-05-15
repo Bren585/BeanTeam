@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
@@ -7,14 +8,21 @@ public class GameOverUIController : MonoBehaviour
     private VisualElement root;
     private VisualElement overlay;
     private VisualElement window;
+    private Label clearCountLabel;
 
+    void Start()
+    {
+        Time.timeScale = 1;
+    }
     private void OnEnable()
     {
         var uiDocument = GetComponent<UIDocument>();
         root = uiDocument.rootVisualElement;
 
-        overlay = root.Q<VisualElement>("Overlay"); // UXML に追加が必要ならここで取得
+        overlay = root.Q<VisualElement>("Overlay");
         var gameOverRoot = root.Q<VisualElement>("GameOverRoot");
+
+        clearCountLabel = root.Q<Label>("ClearCountLabel");  // ここを追加
 
         if (overlay != null)
             overlay.visible = false;
@@ -28,13 +36,21 @@ public class GameOverUIController : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         });
 
-        root.Q<Button>("Title")?.RegisterCallback<ClickEvent>(_ =>
+        root.Q<Button>("TitleBack")?.RegisterCallback<ClickEvent>(_ =>
         {
             Time.timeScale = 1;
             SceneManager.LoadScene("TitleScene");
         });
     }
 
+
+    public void SetClearCount(int count)
+    {
+        if (clearCountLabel != null)
+        {
+            clearCountLabel.text = $"Cleared Stages: {count}";
+        }
+    }
     public void ShowGameOver()
     {
         Debug.Log("ShowGameOver Called");
@@ -49,5 +65,8 @@ public class GameOverUIController : MonoBehaviour
             overlay.visible = true;
     }
 
-
+    internal void SetClearCount(object stages_cleared)
+    {
+        throw new NotImplementedException();
+    }
 }

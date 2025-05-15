@@ -9,11 +9,13 @@ public class TitleMenu : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1;
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
         root.Q<Button>("Start").clicked += OnStartClicked;
         root.Q<Button>("Tutorial").clicked += OnTutorialClicked;
         root.Q<Button>("Credits").clicked += OnCreditsClicked;
         bgmManager = FindFirstObjectByType<TitleBGMManager>(); // BGMマネージャーを取得
+
     }
 
     void OnStartClicked()
