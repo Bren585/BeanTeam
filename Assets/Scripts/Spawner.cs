@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 public class Spawner : MonoBehaviour
 {
@@ -30,7 +27,7 @@ public class Spawner : MonoBehaviour
 
     public void Init(EnemyData data, float timer = 1.0f)
     {
-        transform.position += new Vector3(UnityEngine.Random.Range(1.0f, -1.0f), spawn_height, UnityEngine.Random.Range(1.0f, -1.0f));  
+        transform.position += new Vector3(Random.Range(1.0f, -1.0f), spawn_height, Random.Range(1.0f, -1.0f));  
 
         enemy = Instantiate(
             enemy_prefab, 

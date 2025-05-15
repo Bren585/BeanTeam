@@ -1,7 +1,3 @@
-
-using System.Collections.Generic;
-using System.ComponentModel;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public enum DiscType
@@ -75,7 +71,7 @@ public class Player : Entity
             
             if (discs[2] != null)
             {
-                Debug.Log("Cキー：1⇄2 切り替え -> Slot " + equippedDisc);
+                //Debug.Log("Cキー：1⇄2 切り替え -> Slot " + equippedDisc);
                 if (cussetSound != null && audioSource != null)
                 {
                     audioSource.PlayOneShot(cussetSound);
@@ -85,13 +81,13 @@ public class Player : Entity
                 equippedDisc = (equippedDisc == 2) ? 1 : 2;
                 discs[equippedDisc].PassiveEnter();
 
-                Debug.Log("Cキー：1⇄2 切り替え -> Slot " + equippedDisc);
+                //Debug.Log("Cキー：1⇄2 切り替え -> Slot " + equippedDisc);
                 UpdateDiscVisuals();
 
             }
             else if (discs[1] != null)
             {
-                Debug.Log("Cキー：0⇄1 切り替え -> Slot " + equippedDisc);
+                //Debug.Log("Cキー：0⇄1 切り替え -> Slot " + equippedDisc);
                 if (cussetSound != null && audioSource != null)
                 {
                     audioSource.PlayOneShot(cussetSound);
@@ -107,11 +103,11 @@ public class Player : Entity
             }
             else
             {
-                Debug.Log("Cキー：切り替えできるディスクがない");
+                //Debug.Log("Cキー：切り替えできるディスクがない");
                 equippedDisc = 0;
             }
 
-            Debug.Log("Now Using Slot " + equippedDisc);
+            //Debug.Log("Now Using Slot " + equippedDisc);
 
         }
 
@@ -264,56 +260,56 @@ public class Player : Entity
         discSwitcher.SwitchToFront(false, true); // force = true で切り替え実行
 
         discs[equippedDisc].PassiveExit();
-        Debug.Log("Added new disc to slot " + slot);
+        //Debug.Log("Added new disc to slot " + slot);
     }
     public void Unequip(int slot)
     {
         if (slot < 1 || slot > 2) return;
-        Debug.Log("Unequipping Slot " + slot);
+        //Debug.Log("Unequipping Slot " + slot);
 
         if (equippedDisc == slot) {
             discs[slot].PassiveExit();
-            Debug.Log("Changing active slot (" + equippedDisc + ")");
+           // Debug.Log("Changing active slot (" + equippedDisc + ")");
             if (slot == 1)
             {
                 if (discs[2] != null)
                 {
-                    Debug.Log("Moving disc in slot 2");
+                   // Debug.Log("Moving disc in slot 2");
                     discs[1] = discs[2];
                     discs[2] = null;
                     equippedDisc = 1;
-                    Debug.Log("Disc moved " + ((discs[1] == null) ? "unsucessfully" : "sucessfully"));
+                    //Debug.Log("Disc moved " + ((discs[1] == null) ? "unsucessfully" : "sucessfully"));
                 }
                 else
                 {
-                    Debug.Log("No disc in slot 2");
+                    //Debug.Log("No disc in slot 2");
                     discs[1] = null;
                     equippedDisc = 0;
                 }
             }
             else
             {
-                Debug.Log("Deleting Slot 2");
+               // Debug.Log("Deleting Slot 2");
                 discs[2] = null;
                 equippedDisc = 1;
             }
         } 
         else 
         {
-            Debug.Log("Deleting inactive slot");
+           // Debug.Log("Deleting inactive slot");
             discs[slot] = null;
 
             if (slot == 1 && equippedDisc == 2)
             {
-                Debug.Log("Moving disc in slot 2");
+              //  Debug.Log("Moving disc in slot 2");
                 discs[1] = discs[2];
                 discs[2] = null;
                 equippedDisc = 1;
-                Debug.Log("Disc moved " + ((discs[1] == null) ? "unsucessfully" : "sucessfully"));
+              //  Debug.Log("Disc moved " + ((discs[1] == null) ? "unsucessfully" : "sucessfully"));
             }
         }
 
-        Debug.Log("Unequipped Slot " + slot);
+       // Debug.Log("Unequipped Slot " + slot);
     }
 
     public int IsEquipped<T>() where T : Disc
@@ -365,7 +361,7 @@ public class Player : Entity
                            ? discs[backIndex].discMaterial
                            : none;
 
-        Debug.Log("Switching " + equippedDisc + " and " + backIndex);
+        //Debug.Log("Switching " + equippedDisc + " and " + backIndex);
 
         if (discSwitcher != null)
         {
@@ -411,7 +407,7 @@ public class Player : Entity
             case nameof(Disc_Yellow): return yellowMat;
             case nameof(Disc_Purple): return purpleMat;
             default:
-                Debug.LogWarning("未対応のディスクタイプ: " + typeName);
+               // Debug.LogWarning("未対応のディスクタイプ: " + typeName);
                 return null;
         }
     }

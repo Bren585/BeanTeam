@@ -20,7 +20,7 @@ public class Disc_Blue : Disc
         playerTransform = GetComponentInParent<Player>()?.transform;
         if (playerTransform == null)
         {
-            Debug.LogWarning("Player Transform ‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ‚Å‚µ‚½");
+           
         }
     }
 

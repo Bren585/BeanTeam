@@ -4289,7 +4289,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5748526949951052156, guid: e2db673a5e46d154ca1cbd56039302f6, type: 3}
-
 --- !u!1 &543887201
 GameObject:
   m_ObjectHideFlags: 0
@@ -4321,7 +4320,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-
 --- !u!1 &546017696 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4242169618097501847, guid: e2db673a5e46d154ca1cbd56039302f6, type: 3}
@@ -12816,7 +12814,7 @@ Animator:
   m_GameObject: {fileID: 1443366025}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f79d772670a62614eba3a370381a6cec, type: 2}
+  m_Controller: {fileID: 9100000, guid: cc2b33d955db2f64c882e2999cfab59c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
