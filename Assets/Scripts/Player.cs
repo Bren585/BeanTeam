@@ -101,7 +101,8 @@ public class Player : Entity
 
     private void OnDestroy()
     {
-        FindFirstObjectByType<GameBGMManager>().PlayDeathBGM();
+        var bgm = FindFirstObjectByType<GameBGMManager>();
+        if (bgm != null) bgm.PlayDeathBGM();
         var gameOverUI = FindFirstObjectByType<GameOverUIController>();
         if (gameOverUI != null)
         {

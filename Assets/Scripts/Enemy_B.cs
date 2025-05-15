@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_G : Enemy
-{
+public class Enemy_B : Enemy {
     private enum State
     {
         Idle_Enter,
@@ -52,10 +51,10 @@ public class Enemy_G : Enemy
             case State.Chase:
                 base.Move();
 
-                Vector3 from    = transform.position;
-                Vector3 to      = player.gameObject.transform.position;
-                from.y          = 0f;
-                to.y            = 0f;
+                Vector3 from = transform.position;
+                Vector3 to = player.gameObject.transform.position;
+                from.y = 0f;
+                to.y = 0f;
 
                 Vector3 dist = to - from;
                 float angle = Vector3.SignedAngle(transform.forward, dist, Vector3.up);
@@ -64,7 +63,7 @@ public class Enemy_G : Enemy
                 if (
                     dist.magnitude < attack_trigger_range
                     && angle < 0.1f
-                    && timer <= 0.0f 
+                    && timer <= 0.0f
                     ) { state = State.Attack_Enter; }
                 break;
 

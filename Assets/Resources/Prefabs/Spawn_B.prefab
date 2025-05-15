@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -3921580728631477501}
   - component: {fileID: 8691281509241525383}
   m_Layer: 0
-  m_Name: Spawn_R
+  m_Name: Spawn_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a73a9036dc47f324dbbdb42a3b276745, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy_prefab: {fileID: 4447057242385483141, guid: 21e71827d6efdd346af9037ebcb097aa, type: 3}
-  spawn_height: 1.2
+  enemy_prefab: {fileID: 6886216997194012606, guid: 53e56634aae952c44bf76f812fbb8e35, type: 3}
+  spawn_height: 1.5
 --- !u!198 &-3921580728631477501
 ParticleSystem:
   m_ObjectHideFlags: 0
