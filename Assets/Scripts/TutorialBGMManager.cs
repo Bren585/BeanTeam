@@ -16,7 +16,7 @@ public class TutorialBGMManager : MonoBehaviour
 
     void Awake()
     {
-        DontDestroyOnLoad(gameObject); // シーン遷移を跨いでオブジェクトを残す
+        //DontDestroyOnLoad(gameObject); // シーン遷移を跨いでオブジェクトを残す
 
         source1 = gameObject.AddComponent<AudioSource>();
         source2 = gameObject.AddComponent<AudioSource>();

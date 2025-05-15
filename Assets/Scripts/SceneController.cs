@@ -17,15 +17,20 @@ public class SceneController : MonoBehaviour
         }
         else if (SceneManager.GetActiveScene().name == tutorialSceneName)
         {
-           
+            if (Input.anyKey)
+            {
                 // タイトルに戻る前にBGMオブジェクトを破棄
                 TitleBGMManager existingBGM = FindFirstObjectByType<TitleBGMManager>();
+                TutorialBGMManager existingBGM2=FindFirstObjectByType<TutorialBGMManager>();
                 if (existingBGM != null)
                 {
                     Destroy(existingBGM.gameObject);
+                    Destroy(existingBGM2.gameObject);
                 }
 
                 SceneManager.LoadScene(titleSceneName);
+            }
+         
             
         }
     }

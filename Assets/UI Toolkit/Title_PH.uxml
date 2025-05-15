@@ -1,8 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <ui:VisualElement name="Background" style="flex-grow: 1; align-items: center;">
-        <ui:Label text="Game" name="Title" style="-unity-text-align: upper-center; font-size: 100px; -unity-font-definition: url(&quot;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&amp;guid=f4e4da50e0ea0b245b6b098a32829df9&amp;type=3#NotInter-Regular&quot;);" />
-        <ui:Button text="Start" name="Start" style="width: 200px; align-items: auto;" />
-        <ui:Button text="Tutorial" name="Tutorial" style="width: 200px; align-items: auto;" />
-        <ui:Button text="Credits" name="Credits" style="width: 200px; align-items: auto;" />
+        <ui:Button text="Start" name="Start" style="width: 200px; align-items: auto; -unity-font-definition: url(&quot;project://database/Assets/Fonts/DotGothic16%20(1)/DotGothic16-Regular.ttf?fileID=12800000&amp;guid=e724e2e9ce2e9cb4abb02be0fdba51d8&amp;type=3#DotGothic16-Regular&quot;); -unity-text-align: middle-center;" />
+        <ui:Button text="Tutorial" name="Tutorial" style="width: 200px; align-items: auto; -unity-font-definition: url(&quot;project://database/Assets/Fonts/DotGothic16%20(1)/DotGothic16-Regular.ttf?fileID=12800000&amp;guid=e724e2e9ce2e9cb4abb02be0fdba51d8&amp;type=3#DotGothic16-Regular&quot;);" />
+        <ui:Button text="Credits" name="Credits" style="width: 200px; align-items: auto; -unity-font-definition: url(&quot;project://database/Assets/Fonts/DotGothic16%20(1)/DotGothic16-Regular.ttf?fileID=12800000&amp;guid=e724e2e9ce2e9cb4abb02be0fdba51d8&amp;type=3#DotGothic16-Regular&quot;); transform-origin: bottom;" />
     </ui:VisualElement>
 </ui:UXML>

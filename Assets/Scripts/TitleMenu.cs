@@ -12,6 +12,7 @@ public class TitleMenu : MonoBehaviour
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
         root.Q<Button>("Start").clicked += OnStartClicked;
         root.Q<Button>("Tutorial").clicked += OnTutorialClicked;
+        root.Q<Button>("Credits").clicked += OnCreditsClicked;
         bgmManager = FindFirstObjectByType<TitleBGMManager>(); // BGMマネージャーを取得
     }
 
@@ -39,6 +40,18 @@ public class TitleMenu : MonoBehaviour
         else
         {
             SceneManager.LoadScene(TutorialSceneName);
+        }
+    }
+    void OnCreditsClicked()
+    {
+        string CreditsSceneName = "Credits";
+        if (bgmManager != null)
+        {
+            bgmManager.FadeOutAndLoadScene(CreditsSceneName);
+        }
+        else
+        {
+            SceneManager.LoadScene(CreditsSceneName);
         }
     }
 }
