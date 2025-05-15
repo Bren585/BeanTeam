@@ -3,39 +3,14 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
-    static public string gameSceneName = "SampleScene";
-    static public string titleSceneName = "TitleScene";
+    public const string titleSceneName = "TitleScene";
+    public const string gameSceneName = "SampleScene";
 
     void Update()
     {
-        if (SceneManager.GetActiveScene().name == titleSceneName)
+        if (Input.anyKey)
         {
-            if (Input.GetKeyDown(KeyCode.Return))
-            {
-                TitleBGMManager bgm = FindFirstObjectByType<TitleBGMManager>();
-                if (bgm != null)
-                {
-                    bgm.FadeOutAndLoadScene(gameSceneName);
-                }
-                else
-                {
-                    SceneManager.LoadScene(gameSceneName);
-                }
-            }
-        }
-        else if (SceneManager.GetActiveScene().name == gameSceneName)
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                // タイトルに戻る前にBGMオブジェクトを破棄
-                TitleBGMManager existingBGM = FindFirstObjectByType<TitleBGMManager>(); 
-                if (existingBGM != null)
-                {
-                    Destroy(existingBGM.gameObject);
-                }
-
-                SceneManager.LoadScene(titleSceneName);
-            }
+            SceneManager.LoadScene(titleSceneName);
         }
     }
 }

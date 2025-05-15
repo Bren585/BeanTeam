@@ -6,7 +6,11 @@ public class Prize : MonoBehaviour
 {
     private float timer;
 
-    [SerializeField] private DiscType disc;
+    private DiscType disc;
+
+    [SerializeField] private Renderer material_holder;
+
+    [SerializeField] private Material[] materials;
 
     void Start()
     {
@@ -21,10 +25,16 @@ public class Prize : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Player player = GetComponent<Player>();
+        Player player = FindFirstObjectByType<Player>();
         if (player != null) {
             player.AddDiscType(disc);
         }
         gameObject.SetActive(false);
+    }
+
+    public void SetPrize(DiscType type)
+    {
+        material_holder.material = materials[(int)type];
+        disc = type;
     }
 }

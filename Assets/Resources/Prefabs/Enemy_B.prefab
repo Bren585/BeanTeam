@@ -176,7 +176,7 @@ MonoBehaviour:
   despawn_timer: 4
   max_HP: 1
   cooldown: 1
-  attack_trigger_range: 3
+  attack_trigger_range: 10
 --- !u!114 &7359074339305159585
 MonoBehaviour:
   m_ObjectHideFlags: 0

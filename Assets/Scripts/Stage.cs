@@ -216,6 +216,8 @@ public class Stage : MonoBehaviour
     [SerializeField] Material StageYellow;
     [SerializeField] Material StageMixed;
 
+    public int getClearCount() { return stages_cleared; }
+
     void Start()
     {
         loadingZones = GetComponentsInChildren<LoadingZone>();

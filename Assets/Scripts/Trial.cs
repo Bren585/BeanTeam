@@ -36,6 +36,7 @@ public class Trial : MonoBehaviour
         //enemy_prefab = Resources.Load("Prefabs/Enemy_PH") as GameObject;
         status = state.Idle;
         wave = 0;
+        prize = FindFirstObjectByType<Prize>(FindObjectsInactive.Include);
     }
 
     void Update()
@@ -103,15 +104,10 @@ public class Trial : MonoBehaviour
     }
 
     public void LoadEnemies(Direction d, List<List<EnemyData>> data) { player_entrance = d; TrialData = data; }
-    public void LoadPrize(DiscType disc) { 
-        if (prize) prize.gameObject.SetActive(false);
-        switch (disc)
-        {
-            default:
-                prize = FindFirstObjectByType<Prize>(FindObjectsInactive.Include);
-                break;
-        }
-        if (prize) prize.gameObject.SetActive(false);
+    public void LoadPrize(DiscType disc) {
+        if (prize == null) return;
+        prize.gameObject.SetActive(false);
+        prize.SetPrize(disc);
     } 
     public void Enable() { status = state.Idle; }
     public void Disable() { status = state.Finished; }

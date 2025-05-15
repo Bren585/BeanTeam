@@ -38,7 +38,8 @@ public class Disc_Green : Disc
         {
             enemy.AddImpulse(player.transform.forward * player.Acceleration * Time.deltaTime * 100);
         }
-
+        player.Unequip(player.IsEquipped<Disc_Green>());
+        player.UpdateDiscVisuals();
         //Debug.Log("緑ディスクスキル");
         // スキル処理を後で追加する場合
     }

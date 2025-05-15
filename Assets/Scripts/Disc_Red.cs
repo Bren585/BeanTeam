@@ -47,7 +47,8 @@ public class Disc_Red : Disc
         }
 
         //Debug.Log("Red Skill");
-     
+        player.Unequip(player.IsEquipped<Disc_Red>());
+        player.UpdateDiscVisuals();
     }
     public override void PassiveEnter()
     {

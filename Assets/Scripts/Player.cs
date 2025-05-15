@@ -325,6 +325,7 @@ public class Player : Entity
 
     public void AddDiscType(DiscType type)
     {
+        //Debug.Log("Disc Get!!! " + type);
         switch (type)
         {
             case DiscType.Red:

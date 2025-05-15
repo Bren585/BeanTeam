@@ -24,8 +24,6 @@ public class DiscSwitcher : MonoBehaviour
     {
         discA.localPosition = frontPos;
         discB.localPosition = backPos;
-
- 
     }
 
     private void Update()

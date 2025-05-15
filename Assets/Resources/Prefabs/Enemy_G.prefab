@@ -319,9 +319,8 @@ MonoBehaviour:
   cussetSound: {fileID: 0}
   despawn_timer: 4
   max_HP: 1
-  emitter: {fileID: 0}
   cooldown: 1
-  attack_trigger_range: 20
+  attack_trigger_range: 10
 --- !u!199 &4686862549467471364
 ParticleSystemRenderer:
   serializedVersion: 6
