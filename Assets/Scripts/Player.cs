@@ -95,7 +95,7 @@ public class Player : Entity
                 equippedDisc = (equippedDisc == 1) ? 0 : 1;
                 discs[equippedDisc].PassiveEnter();
 
-                Debug.Log("Cキー：0⇄" + other + " 切り替え -> Slot " + equippedDisc);
+                //Debug.Log("Cキー：0⇄" + other + " 切り替え -> Slot " + equippedDisc);
                 UpdateDiscVisuals();
 
             }
@@ -344,7 +344,7 @@ public class Player : Entity
         }
     }
 
-    private void UpdateDiscVisuals()
+    public void UpdateDiscVisuals()
     {
         Material frontMat = discs[equippedDisc]?.discMaterial;
 
