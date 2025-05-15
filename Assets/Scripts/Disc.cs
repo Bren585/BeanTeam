@@ -4,6 +4,7 @@ public class Disc : Emitter
 {
     public AudioClip shootSound;
     private AudioSource audioSource;
+    public Material discMaterial;
 
     protected virtual void Start()
     {

@@ -16,7 +16,13 @@ public enum DiscType
 
 public class Player : Entity
 {
-    //private List<Disc> discs = new List<Disc>();
+    [SerializeField] private DiscSwitcher discSwitcher;
+    [SerializeField] private Material redMat;
+    [SerializeField] private Material greenMat;
+    [SerializeField] private Material blueMat;
+    [SerializeField] private Material yellowMat;
+    [SerializeField] private Material purpleMat;
+    [SerializeField] private Material none;
     private Disc[] discs;
     private int equippedDisc = 0;
 
@@ -26,6 +32,8 @@ public class Player : Entity
         discs = new Disc[3];
         discs[0] = GetComponentInChildren<Disc_Purple>();
         equippedDisc = 0;
+        discSwitcher.SetMaterials(purpleMat, none); 
+        discSwitcher.SwitchToFront(true);  // 紫が前に来るように設定
     }
 
     protected override void Move()
@@ -80,6 +88,7 @@ public class Player : Entity
                 }
 
                 Debug.Log("Cキー：1⇄2 切り替え -> Slot " + equippedDisc);
+                UpdateDiscVisuals();
             }
             else if (discs[1] != null ^ discs[2] != null) // どちらか1つだけある
             {
@@ -101,11 +110,13 @@ public class Player : Entity
                 }
 
                 Debug.Log("Cキー：0⇄" + other + " 切り替え -> Slot " + equippedDisc);
+                UpdateDiscVisuals();
             }
             else
             {
                 Debug.Log("Cキー：切り替えできるディスクがない");
             }
+            
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
@@ -114,25 +125,124 @@ public class Player : Entity
 
 
     }
+    //public void AddDisc(Disc newDisc)
+    //{
+    //    int slot = (discs[1] == null) ? 1 :
+    //               (discs[2] == null) ? 2 : -1;
+
+    //    if (slot == -1)
+    //    {
+    //        // discs[1] を削除、discs[2] を左にスライド
+    //        if (discs[1] != null)
+    //        {
+    //            discs[1].PassiveExit();
+    //            Destroy(discs[1].gameObject);
+    //        }
+    //        discs[1] = discs[2];
+    //        discs[2] = null;
+    //        slot = 2;
+    //    }
+
+    //    discs[slot] = newDisc;
+    //    equippedDisc = slot;
+    //    newDisc.PassiveEnter();
+
+    //    UpdateDiscVisuals();
+
+    //    // ディスクが2つ揃ったときにDiscSwitcherにセット
+    //    if (discs[1] != null && discs[2] != null)
+    //    {
+    //        int front = equippedDisc;
+    //        int back = (front == 1) ? 2 : 1;
+
+    //        //if (discSwitcher != null)
+    //       // {
+    //            discSwitcher.SetMaterials(discs[front].discMaterial, discs[back].discMaterial);
+    //            discSwitcher.SwitchToFront(true, true); 
+    //       // }
+    //    }
+    //}
+    //public void AddDisc(Disc newDisc)
+    //{
+    //    int slot = (discs[1] == null) ? 1 :
+    //               (discs[2] == null) ? 2 : -1;
+
+    //    if (slot == -1)
+    //    {
+    //        if (discs[1] != null)
+    //        {
+    //            discs[1].PassiveExit();
+    //            Destroy(discs[1].gameObject);
+    //        }
+    //        discs[1] = discs[2];
+    //        discs[2] = null;
+    //        slot = 2;
+    //    }
+
+    //    discs[slot] = newDisc;
+    //    equippedDisc = slot;
+    //    newDisc.PassiveEnter();
+
+    //    if (discs[0] != null && slot == 1)
+    //    {
+    //        discSwitcher.SetMaterials(discs[0].discMaterial, discs[1].discMaterial);
+    //        discSwitcher.SwitchToFront(true, true); // 紫を front に
+    //        equippedDisc = 0; // 紫に戻す（見た目と一致）
+    //        return;
+    //    }
+    //    // 新たに2枚の組が揃ったら DiscSwitcher を更新
+    //    int front = equippedDisc;
+    //    int back = GetBackDiscIndex();
+
+    //    if (front != -1 && back != -1 &&
+    //        discs[front] != null && discs[back] != null)
+    //    {
+    //        discSwitcher.SetMaterials(discs[front].discMaterial, discs[back].discMaterial);
+    //        discSwitcher.SwitchToFront(front == 1 || front == 2, true); // 1か2なら isADiscFront
+    //    }
+
+
+    //}
+
     public void AddDisc(Disc newDisc)
     {
         int slot = (discs[1] == null) ? 1 :
                    (discs[2] == null) ? 2 : -1;
 
+        // 3つ目のディスクを入れる場合、古いものを押し出す
         if (slot == -1)
         {
-            // discs[1]を削除し、discs[2]を左にスライド
-            discs[1].PassiveExit();
-            Destroy(discs[1].gameObject);
+            if (discs[1] != null)
+            {
+                discs[1].PassiveExit();
+                Destroy(discs[1].gameObject);
+            }
             discs[1] = discs[2];
             discs[2] = null;
             slot = 2;
         }
 
+        // 新しいディスクをセットして装備中にする
         discs[slot] = newDisc;
-        equippedDisc = slot;
         newDisc.PassiveEnter();
+
+        // 🟡 装備中ディスクを新しく入手したディスクにする
+        equippedDisc = slot;
+
+        // front = 入手したディスク, back = もう1つ（または none）
+        int front = equippedDisc;
+        int back = GetBackDiscIndex();
+
+        Material frontMat = (discs[front] != null) ? discs[front].discMaterial : none;
+        Material backMat = (back != -1 && discs[back] != null) ? discs[back].discMaterial : none;
+
+        // 💡 DiscSwitcher に反映
+        discSwitcher.SetMaterials(frontMat, backMat);
+
+        // 💡 DiscSwitcher にアニメーション付きで切り替え指示
+        discSwitcher.SwitchToFront(false, true); // force = true で切り替え実行
     }
+
 
     private void TryAddDisc<T>() where T : Disc
     {
@@ -161,5 +271,66 @@ public class Player : Entity
                 break;
         }
     }
+
+    private void UpdateDiscVisuals()
+    {
+        Material frontMat = discs[equippedDisc]?.discMaterial;
+
+        int backIndex = GetBackDiscIndex();
+        Material backMat = (backIndex != -1 && discs[backIndex] != null)
+                           ? discs[backIndex].discMaterial
+                           : none;
+
+        Debug.Log("Switching " + equippedDisc + " and " + backIndex);
+
+        if (discSwitcher != null)
+        {
+            discSwitcher.SetMaterials(frontMat, backMat);
+
+            discSwitcher.SwitchToFront(false);
+        }
+    }
+
+
+
+    private int GetBackDiscIndex()
+    {
+        if (equippedDisc == 1) 
+        {
+            if (discs[2] != null) { return 2; } else { return 0; } 
+        }
+        if (equippedDisc == 2)
+        {
+            if (discs[1] != null) { return 1; } else { return 0; }
+        }
+        if (discs[1] != null) { return 1; }
+        if (discs[2] != null) { return 2; }
+        return -1;
+
+        //for (int i = 2; i >= 0; i--)
+        //{
+        //    if (i != equippedDisc && discs[i] != null)
+        //        return i;
+        //}
+        //return -1;
+    }
+
+    private Material GetMaterial(System.Type type)
+    {
+        string typeName = type?.Name;
+
+        switch (typeName)
+        {
+            case nameof(Disc_Red): return redMat;
+            case nameof(Disc_Green): return greenMat;
+            case nameof(Disc_Blue): return blueMat;
+            case nameof(Disc_Yellow): return yellowMat;
+            case nameof(Disc_Purple): return purpleMat;
+            default:
+                Debug.LogWarning("未対応のディスクタイプ: " + typeName);
+                return null;
+        }
+    }
+
 
 }
